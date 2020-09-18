@@ -1,0 +1,55 @@
+.Container {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.Row {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.BackButton {
+  margin-top: 40px;
+}
+
+.Title {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 26px;
+  margin-left: 11%;
+  margin-top: 40px;
+}
+
+.ButtonContainer {
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 9%;
+  margin-top: 100px;
+}
+
+.TextContainer {
+  margin: 15% 0 25% 0;
+  display: flex;
+  justify-content: space-between;
+  width: 80%
+}
+
+.Text {
+  font-family: ITCAvantGardeNormal;
+  font-size: 15px;
+  color: #C1839F;
+}
+
+.Text a {
+  color: #C1839F;
+  text-decoration: none;
+}
+
+.Text:hover {
+  cursor: pointer;
+}
+
+.Text a:hover {
+  color: #C1839F;
+  text-decoration: none;
+}

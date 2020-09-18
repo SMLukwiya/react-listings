@@ -1,0 +1,14 @@
+.Container {
+  width: 100%;
+}
+
+.Title {
+  font-family: ITCAvantGardeStdBold;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.Question {
+  font-family: ITCAvantGardeNormal;
+  font-size: 12px;
+}

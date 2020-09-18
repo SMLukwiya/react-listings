@@ -1,0 +1,63 @@
+.Container {
+  width: 100%;
+  background-color: #403D39;
+}
+
+.FooterRow {
+  width: 80%;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.TitleCol {
+  margin-top: 20px;
+  margin-bottom: -10px;
+  box-sizing: border-box;
+}
+
+.Title {
+  font-size: 20px;
+  font-family: ITCAvantGardeNormal;
+  color: #FFFFFF
+}
+
+.FooterItem {
+  margin-bottom: 18px;
+  box-sizing: border-box;
+}
+
+.FooterItem a {
+  font-family: ITCAvantGardeNormal;
+  font-size: 11px;
+  color: #FFFFFF;
+}
+
+.FooterItem a:hover {
+  cursor: pointer;
+  color: #FFFFFF;
+}
+
+.FooterDivider {
+  width: 95%;
+  margin: auto;
+  box-sizing: border-box;
+  height: 2px;
+  background-color: #B2B2B2;
+}
+
+.LowerContainer {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 5%;
+  margin-top: 18px;
+  padding-bottom: 15px;
+}
+
+.LowerContent {
+  color: #FFFFFF;
+  margin-right: 10px;
+  font-family: ITCAvantGardeNormal;
+  font-size: 12px;
+}

@@ -1,0 +1,62 @@
+.Container {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.Row {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.BackButton {
+  margin-top: 40px;
+}
+
+.HowItWorksCol {
+
+}
+
+.Title {
+  font-family: ITCAvantGardeNormal;
+  font-size: 26px;
+  margin-left: 11%;
+  margin-top: 40px;
+}
+
+.CategoryContainer {
+  display: flex;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  margin-top: 8%;
+}
+
+.CategoryTitle {
+  font-family: ITCAvantGardeNormal;
+  font-size: 15px;
+  background-color: #C1839F;
+  margin-right: 8px;
+  width: 130px;
+  height: 38px;
+  padding-top: 7px;
+  text-align: center;
+  color: #FFF;
+}
+
+.CategoryText {
+  font-family: ITCAvantGardeNormal;
+  font-size: 15px;
+  background-color: grey;
+  height: 38px;
+  color: #FFF;
+  margin: 0 7px;
+  padding: 5px 20px;
+  margin-bottom: 10px;
+}
+
+.ButtonContainer {
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 9%;
+  margin-top: 100px;
+}

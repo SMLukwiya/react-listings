@@ -1,0 +1,111 @@
+.Container {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.MenuRow {
+  margin-top: 30px;
+}
+
+.ButtonRow {
+  margin-top: 70px;
+  width: 75%;
+  margin-left: 17%;
+}
+
+.Col1 {
+  height: 60px;
+}
+
+.Col {}
+
+.TitleHolder {
+  margin-top: 55px;
+  margin-left: 20%;
+  width: 400px;
+}
+
+.Title {
+  font-size: 35px;
+  font-family: ITCAvantGardeStdBold;
+  text-align: right;
+}
+
+.ButtonDescription {
+  font-size: 13px;
+  width: 175px;
+  margin-top: 13px;
+  margin-left: 25px;
+  font-family: ITCAvantGardeNormal;
+}
+
+.HowItWorksContainer {
+  margin-top: 150px;
+}
+
+.HowItWorksRow {
+  width: 80%;
+  margin: 10px auto 100px auto;
+}
+
+.HowItWorksTitleContainer {
+  text-align: right;
+}
+
+.HowItWorksTitle1 {
+  font-size: 20px;
+  margin-right: 5%;
+  margin-bottom: 50px;
+  font-family: ITCAvantGardeNormal;
+}
+
+.HowItWorksTitle2 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  margin-right: 5%;
+  font-family: ITCAvantGardeNormal;
+}
+
+.TileContainerCol {
+  margin: 5px auto 50px auto;
+}
+
+.CEOCol {
+  /* height: 350px; */
+}
+
+.CEOHeaderText {
+  font-family: ITCAvantGardeNormal
+}
+
+.CEOImage {
+  height: 350px;
+  width: 390px;
+  z-index: 11;
+}
+
+.CEOText {
+  position: relative;
+  margin-top: 35px;
+  margin-left: 17%;
+  height: 330px;
+  width: 70%;
+  background-color: rgba(0,0,0, 0.2)
+}
+
+.AboutusRow {
+  margin: 0 auto 30px auto;
+  width: 80%;
+  height: 350px;
+  background-color: rgba(0,0,0,0.1);
+  font-family: ITCAvantGardeNormal;
+}
+
+.OptionalinfoRow {
+  margin: 100px auto 0 auto;
+  width: 80%;
+  height: 250px;
+  background-color: rgba(0,0,0,0.1);
+  font-family: ITCAvantGardeNormal;
+}

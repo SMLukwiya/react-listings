@@ -1,0 +1,65 @@
+.Container {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.Row {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.BackButton {
+  margin-top: 40px;
+}
+
+.FAQsCol {
+  margin-top: 40px;
+}
+
+.FAQsTitle {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 23px;
+  color: #403D39;
+  margin-left: 30%;
+}
+
+.FAQsSubtitle {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 20px;
+  color: #403D39;
+  margin-top: 5%;
+}
+
+.FAQsWorksRow {
+  margin-top: 80px;
+  margin-right: 7%;
+}
+
+.TileContainerCol {
+  margin: 5px auto 50px auto;
+}
+
+.QuestionContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 30%;
+  margin-right: 25px;
+}
+
+.QuestionContainer > div {
+  width: 100%;
+  margin: 5px;
+}
+
+.SingleQuestion {
+  font-family: ITCAvantGardeStdBold;
+  font-size: 12px;
+  margin: 10px 0;
+}
+
+.SingleAnswer {
+  font-family: ITCAvantGardeNormal;
+  font-size: 12px;
+  margin: 20px 0;
+}

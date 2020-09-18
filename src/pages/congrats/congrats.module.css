@@ -1,0 +1,63 @@
+.Container {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.Row {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.BackButton {
+  margin-top: 40px;
+}
+
+.CongratsCol {
+  padding-left: 7%;
+}
+
+.Title {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 30px;
+  margin-top: 100px;
+  margin-bottom: 8%;
+  color: #403D39;
+}
+
+.Text {
+  font-family: ITCAvantGardeNormal;
+  font-size: 14px;
+  margin-bottom: 40px;
+}
+
+.ButtonContainer {
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30%
+}
+
+.Button {
+  height: 100%;
+  border: 0;
+  border-radius: 30px;
+  width: 250px;
+  padding: 8px 30px;
+  background-color: #00A8E8;
+  outline: none;
+}
+
+.Button:hover {
+  cursor: pointer;
+}
+
+.Button:active {
+  outline: none;
+}
+
+.ButtonText {
+  font-size: 18px;
+  color: #FFFFFF;
+  font-family: ITCAvantGardeStdMedium;
+  margin-right: 3px;
+}

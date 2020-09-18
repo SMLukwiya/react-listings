@@ -1,0 +1,51 @@
+.Container {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.Row {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.BackButton {
+  margin-top: 40px;
+}
+
+.ConfirmCol {
+  margin-top: 13%;
+  padding-left: 5%;
+}
+
+.ConfirmText {
+  font-family: ITCAvantGardeNormal;
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-right: 30px;
+}
+
+.ResendText {
+  font-family: ITCAvantGardeNormal;
+  font-size: 14px;
+  margin-right: 30px;
+}
+
+.ResendContainer {
+  display: flex;
+  height: 40px;
+  align-items: center;
+}
+
+.ButtonContainer {
+  height: 100%;
+  border: 0;
+  border-radius: 30px;
+  padding: 9px 30px;
+  background-color: #00A8E8;
+}
+
+.ButtonText {
+  font-size: 15px;
+  color: #FFFFFF;
+  font-family: ITCAvantGardeNormal;
+}

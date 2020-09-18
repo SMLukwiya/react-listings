@@ -4,6 +4,15 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// fonts
+import './assets/fonts/ITCAvantGardeStdBk.otf';
+import './assets/fonts/ITCAvantGardeStdBold.otf';
+import './assets/fonts/ITCAvantGardeStdBoldObl.otf';
+import './assets/fonts/ITCAvantGardeStdMd.otf';
+import './assets/fonts/ITCAvantGardeStdMdObl.otf';
+import './assets/fonts/ITCAvantGardeStdXLt.otf';
+import './assets/fonts/ITCAvantGardeStdXLtObl.otf';
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

@@ -1,13 +1,34 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'ITCAvantGardeNormal';
+  src: local('ITCAvantGardeNormal'), url(./assets/fonts/ITCAvantGardeStdBk.otf) format('opentype');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'ITCAvantGardeStdBold';
+  src: local('ITCAvantGardeStdBold'), url(./assets/fonts/ITCAvantGardeStdBold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'ITCAvantGardeStdBoldItalic';
+  src: local('ITCAvantGardeStdBoldItalic'), url(./assets/fonts/ITCAvantGardeStdBoldObl.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'ITCAvantGardeStdMedium';
+  src: local('ITCAvantGardeStdMedium'), url(./assets/fonts/ITCAvantGardeStdMd.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'ITCAvantGardeStdMediumItalic';
+  src: local('ITCAvantGardeStdMediumItalic'), url(./assets/fonts/ITCAvantGardeStdMdObl.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'ITCAvantGardeStdLight';
+  src: local('ITCAvantGardeStdLight'), url(./assets/fonts/ITCAvantGardeStdXLt.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'ITCAvantGardeStdLightItalic';
+  src: local('ITCAvantGardeStdLightItalic'), url(./assets/fonts/ITCAvantGardeStdXLtObl.otf) format('opentype');
 }

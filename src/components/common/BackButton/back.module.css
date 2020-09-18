@@ -1,0 +1,56 @@
+.Container {
+  box-sizing: border-box;
+  display: flex;
+  /* padding-left: 10px; */
+}
+
+.ArrowImage {
+  margin-left: 10px;
+  margin-right: 3px;
+  height: 13px;
+  width: 13px;
+  transition: .5s;
+}
+
+.RectangleImage {
+  margin-right: -9px;
+  margin-top: 2px;
+  height: 14px;
+  width: 10px;
+  padding-right: 10;
+  transform: rotate(45deg);
+  transition: .5s;
+}
+
+.back {
+  margin-top: 12px;
+  margin-left: 10px;
+  background-color: #000;
+  width: 5px;
+  height: 2px;
+  transition: .5s;
+}
+
+.Container:hover {
+  cursor: pointer;
+}
+
+.Container:hover > .ArrowImage {
+  height: 25px;
+  width: 16px;
+  margin-left: 0;
+  direction: ltr;
+}
+
+.Container:hover > .RectangleImage {
+  margin-right: 0;
+  height: 10px;
+  width: 6px;
+  direction: ltr;
+}
+
+.Container:hover > .back {
+  width: 14px;
+  margin-left: 0;
+  direction: ltr;
+}

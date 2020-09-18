@@ -1,0 +1,23 @@
+.Container {
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin-left: 30%;
+}
+
+.Link {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  transform: rotate(-90deg);
+}
+
+.Link a {
+  color: #403D39;
+  font-family: ITCAvantGardeNormal;
+}
+
+.Link a:hover {
+  cursor: pointer;
+  color: #403D39;
+}
