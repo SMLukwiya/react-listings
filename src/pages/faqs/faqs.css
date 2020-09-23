@@ -1,14 +1,29 @@
-.Container {
+/* CSSTransition */
+.faqsPage--enter {
+  opacity: 0;
+}
+
+.faqsPage--enter-active {
+  opacity: 1;
+  transition: .8s;
+}
+
+/* Page CSS */
+.faqsPageContainer {
   background-color: #F5F5F5;
   height: 100vh;
 }
 
-.Row {
+.faqsPageRow {
   padding-top: 130px;
   background-color: #F5F5F5;
 }
 
-.BackButton {
+.faqsPageCol {
+  position: fixed;
+}
+
+.faqsPageBackButton {
   margin-top: 40px;
 }
 
@@ -27,7 +42,8 @@
   font-family: ITCAvantGardeStdMedium;
   font-size: 20px;
   color: #403D39;
-  margin-top: 5%;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .FAQsWorksRow {
@@ -35,11 +51,11 @@
   margin-right: 7%;
 }
 
-.TileContainerCol {
+.faqsPageTileContainerCol {
   margin: 5px auto 50px auto;
 }
 
-.QuestionContainer {
+.faqsPageQuestionContainer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -47,18 +63,18 @@
   margin-right: 25px;
 }
 
-.QuestionContainer > div {
+.faqsPageQuestionContainer > div {
   width: 100%;
   margin: 5px;
 }
 
-.SingleQuestion {
+.faqsPageSingleQuestion {
   font-family: ITCAvantGardeStdBold;
   font-size: 12px;
   margin: 10px 0;
 }
 
-.SingleAnswer {
+.faqsPageSingleAnswer {
   font-family: ITCAvantGardeNormal;
   font-size: 12px;
   margin: 20px 0;

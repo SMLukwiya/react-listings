@@ -1,0 +1,67 @@
+/* CSSTransition */
+.signinPage--enter {
+  opacity: 0;
+}
+
+.signinPage--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+/* Page CSS */
+.signInContainer {
+  background-color: #F5F5F5;
+  padding-top: 180px;
+  height: 100vh;
+}
+
+.signInRow {
+  background-color: #F5F5F5
+}
+
+.signInBackButton {
+  margin-top: 10px;
+}
+
+.SiginCol {
+  margin-top: 8%;
+  padding-left: 5%;
+}
+
+.SigninTitle {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.SigninText {
+  font-family: ITCAvantGardeNormal;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.SigninEmailText {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.signInInputContainer {
+  width: 35%;
+  height: 40px;
+}
+
+.signInCreateAccount {
+  font-family: ITCAvantGardeNormal;
+  font-size: 12px;
+  margin-left: 15px;
+  margin-top: 8px;
+}
+
+.signInNextContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 7%;
+  margin-top: 8%;
+  height: 40px;
+}

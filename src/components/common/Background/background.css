@@ -1,0 +1,15 @@
+.backgroundImageContainer {
+  top: calc(100% - 400px);
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  background-image: url('../../../assets/skylines.svg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-attachment: fixed;
+  background-size: contain;
+  background-clip: content-box;
+  background-origin:content-box;
+  opacity: 1;
+}

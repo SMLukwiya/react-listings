@@ -1,51 +1,62 @@
-.Container {
+/* CSSTransition */
+.findingPage--enter {
+  opacity: 0;
+}
+.findingPage--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+/* Page CSS */
+.findingPageContainer {
   background-color: #F5F5F5;
   height: 100vh;
 }
 
-.Row {
+.findingPageRow {
   padding-top: 130px;
   background-color: #F5F5F5;
 }
 
-.BackButton {
+.findingPageBackButton {
   margin-top: 40px;
 }
 
-.FindingCol {
+.findingPageFindingCol {
   padding-left: 7%;
 }
 
-.Title {
+.findingPageTitle {
   font-family: ITCAvantGardeStdMedium;
   font-size: 30px;
   margin-top: 35px;
   margin-bottom: 12%;
 }
 
-.Email {
+.findingPageEmail {
   font-family: ITCAvantGardeStdMedium;
   font-size: 14px;
   margin-bottom: 5px;
 }
 
-.InputContainer {
+.findingPageInputContainer {
   width: 430px;
   height: 40px;
   margin-bottom: 25px;
 }
 
-.Text {
+.findingPageText {
   font-family: ITCAvantGardeNormal;
   font-size: 14px;
   margin-bottom: 30px;
 }
 
-.ButtonContainer {
+.findingPageButtonContainer {
   height: 40px;
+  width: 200px;
 }
 
-.Button {
+.findingPageButton {
   height: 100%;
   border: 0;
   border-radius: 30px;
@@ -56,12 +67,12 @@
   justify-content: center;
 }
 
-.Button:hover:active {
+.findingPageButton:hover {
   cursor: pointer;
   outline: none;
 }
 
-.ButtonText {
+.findingPageButtonText {
   font-size: 17px;
   color: #FFFFFF;
   font-family: ITCAvantGardeNormal;

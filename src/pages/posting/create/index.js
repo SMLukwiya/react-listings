@@ -1,55 +1,70 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Row, Col, Input } from 'antd';
 import {Link} from 'react-router-dom';
+import {CSSTransition} from 'react-transition-group';
 
-import classes from './create.module.css';
+import './create.css';
 import Header from '../../../components/Header';
 import Menu from '../../../components/Menu';
 import BackButton from '../../../components/common/BackButton';
-import Button from '../../../components/common/Button';
+import Background from '../../../components/common/Background';
+import AnimatedButton from '../../../components/common/Button/Animated';
 
 const { TextArea } = Input;
 
-const Confirm = (props) => (
-  <div className={classes.Container}>
-    <Header color='#C1839F' />
-    <Row className={classes.Row}>
-      <Col span={4}>
-        <Menu />
-      </Col>
-      <Col span={2} className={classes.BackButton}>
-        <BackButton history={props.history} />
-      </Col>
-      <Col span={18} className={classes.ConfirmCol}>
-        <div className={classes.Title}>describe your space</div>
-        <Row>
-          <Col span={12}>
-            <Row className={classes.EntryRow}>
-              <Col className={classes.EntryTitle}>name/title</Col>
-              <Col className={classes.InputContainer}><input className={classes.Input}/></Col>
-            </Row>
-            <Row>
-              <div className={classes.EntryTitle}>description</div>
-              <div className={classes.InputContainer}><textarea row={10} className={classes.TextBox} /></div>
-            </Row>
+const Confirm = (props) => {
+  const [showPage, setShowPage] = useState(false);
+
+  useEffect(() => {setShowPage(true)}, []);
+
+  return (
+    <CSSTransition
+      in={showPage}
+      timeout={800}
+      classNames="createPage-"
+      unmountOnExit>
+      <div className='createPageContainer'>
+        <Background />
+        <Header color='#C1839F' />
+        <Row className='createPageRow'>
+          <Col span={4}>
+            <Menu />
           </Col>
-          <Col span={12}>
-            <Row className={classes.EntryRow}>
-              <Col className={classes.EntryTitle}>images</Col>
-              <Col className={classes.ImageContainer}>
-                {[1,2,3,4].map((item) => <div key={item} className={classes.ImageInput}/>)}
+          <Col span={2} className='createPageBackButton'>
+            <BackButton history={props.history} />
+          </Col>
+          <Col span={18} className='createPageCol'>
+            <div className='createPageTitle'>describe your space</div>
+            <Row>
+              <Col span={12}>
+                <Row className='createPageEntryRow'>
+                  <Col className='createPageEntryTitle'>name/title</Col>
+                  <Col className='createPageInputContainer'><input className='createPageInput'/></Col>
+                </Row>
+                <Row>
+                  <div className='createPageEntryTitle'>description</div>
+                  <div className='createPageInputContainer'><textarea row={10} className='createPageTextBox' /></div>
+                </Row>
+              </Col>
+              <Col span={12}>
+                <Row className='createPageEntryRow'>
+                  <Col className='createPageEntryTitle'>images</Col>
+                  <Col className='createPageImageContainer'>
+                    {[1,2,3,4].map((item) => <div key={item} className='createPageImageInput' />)}
+                  </Col>
+                </Row>
               </Col>
             </Row>
+            <div className='createPageButtonContainer'>
+              <Link to="/posting/howitworks/create/confirm">
+                <AnimatedButton title='next' small color='#C1839F' />
+              </Link>
+            </div>
           </Col>
         </Row>
-        <div className={classes.ButtonContainer}>
-          <Link to="/posting/howitworks/create/confirm">
-            <Button title='next' small color='#C1839F' />
-          </Link>
-        </div>
-      </Col>
-    </Row>
-  </div>
-)
+      </div>
+    </CSSTransition>
+  )
+}
 
 export default Confirm;

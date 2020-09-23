@@ -1,6 +1,7 @@
 .Container {
   width: 100%;
   background-color: #403D39;
+  z-index: 8;
 }
 
 .FooterRow {

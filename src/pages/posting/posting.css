@@ -1,0 +1,168 @@
+/* CSSTransition */
+.postingPage--enter {
+  opacity: 0;
+}
+
+.postingPage--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+.modal--appear {
+  opacity: 0;
+  transform: scale(0.1);
+}
+
+.modal--appear-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: .8s
+}
+
+.modal--appear-done {
+  opacity: 1;
+}
+
+.modal--exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.modal--exit-active {
+  opacity: 0;
+  transform: scale(0.1);
+  transition: .8s;
+}
+
+/* Page CSS */
+.postingPageContainer {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.postingPageRow {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.postingPageBackButton {
+  margin-top: 40px;
+}
+
+.postingPageTitle {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 29px;
+  margin-top: 35px;
+  margin-bottom: 7%;
+  margin-left: 10%;
+  color: #403D39;
+}
+
+.postingPageTileRow {
+  margin-right: 10%;
+}
+
+.postingPageButtonContainer {
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 7%;
+  margin-top: 100px;
+}
+
+.backdrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 88;
+  transition: 5s;
+}
+
+.modalContainer {
+  position: fixed;
+  left: 25%;
+  top: 25%;
+  height: 50%;
+  width: 800px;
+  background-color: #FFF;
+  box-sizing: border-box;
+  z-index: 99;
+}
+
+.ModalTitle {
+  font-family: ITCAvantGardeNormal;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 250px;
+}
+
+.postingPageClose {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+.postingPageClose:hover {
+  cursor: pointer;
+}
+
+.postingPageArrow1 {
+  width: 13px;
+  margin-right: 4px;
+  margin-top: -2px;
+  transition: .3s;
+}
+
+.postingPageArrow2 {
+  transform: rotate(180deg);
+  width: 13px;
+  margin-right: -14px;
+  margin-top: 3px;
+  transition: .3s;
+}
+
+.postingPageClose1 {
+  transform: rotate(45deg);
+  height: 25px;
+  width: 2px;
+  background-color: #000;
+  position: absolute;
+  transition: .3s;
+}
+
+.postingPageClose2 {
+  transform: rotate(-45deg);
+  height: 25px;
+  width: 2px;
+  background-color: #000;
+  transition: .3s;
+  position: absolute;
+}
+
+.postingPageClose:hover > .postingPageClose1 {
+  height: 15px;
+  width: 2px;
+}
+
+.postingPageClose:hover > .postingPageClose2 {
+  height: 15px;
+  width: 2px;
+}
+
+.postingPageClose:hover > .postingPageArrow1 {
+  width: 20px;
+  margin-right: 11px;
+  margin-top: -2px;
+}
+
+.postingPageClose:hover > .postingPageArrow2 {
+  width: 20px;
+  margin-right: -24px;
+  margin-top: 2px;
+}

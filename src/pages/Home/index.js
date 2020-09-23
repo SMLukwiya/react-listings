@@ -1,13 +1,15 @@
-import React, {useRef} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import { Row, Col, Image } from 'antd';
 import {Link} from 'react-router-dom';
+import {CSSTransition} from 'react-transition-group';
 
-import classes from './home.module.css';
+import './home.css';
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
 import Button from '../../components/common/Button';
 import Tile from '../../components/common/Tile';
 import Footer from '../../components/Footer';
+import Background from '../../components/common/Background';
 
 const pencil = require('../../assets/icons/pencil.svg');
 const news = require('../../assets/icons/calender.svg');
@@ -65,63 +67,80 @@ const howItWorksPost = [
   }
 ];
 
-const Home = () => {
+const Home = (props) => {
+  const [showPage, setShowPage] = useState(false);
   const howitworksRef = useRef(null);
   const aboutusRef = useRef(null);
 
+  const location = props.location.pathname, history = props.history;
+
+  // Show Page
+  useEffect(() => {setShowPage(true);}, []);
+
+  const scrollDelay = (ms) => (new Promise(res => setTimeout(res, ms)));
+
   // HOF for page scrolling
-  const handleScrollClick = e => section => {
+  const handleScrollClick = e => async section => {
     e.preventDefault();
     const main = section.current;
-    window.scrollTo({
-      top: main.offsetTop - 150,
-      left: 0,
-      behaviour: 'smooth'
-    })
+    for (let y = 0; y <= main.offsetTop-150; y+= 180) {
+      window.scrollTo({
+        top: y,
+        left: 0,
+        behaviour: 'smooth'
+      })
+      await scrollDelay(30)
+    }
   };
 
   return (
+    <CSSTransition
+      in={showPage}
+      classNames="homePage-"
+      timeout={800}
+      unmountOnExit>
     <div>
+      <Background />
       <Header color='#403D39' />
-      <div className={classes.Container}>
-        <Row className={classes.MenuRow}>
-          <Col span={4} className={classes.Col}>
-            <Menu click={handleScrollClick} howitworksRef={howitworksRef} aboutRef={aboutusRef}/>
+      <div className='homePageContainer'>
+        <Row className='homePageMenuRow'>
+          <Col span={4} className='homePageCol'>
+            <Menu click={handleScrollClick} howitworksRef={howitworksRef} aboutRef={aboutusRef} location={location} history={history} />
           </Col>
 
-          <Col span={18} className={classes.Col}>
-            <div className={classes.TitleHolder}>
-              <p className={classes.Title}>Find your new home,<br></br>from home.</p>
+          <Col span={18} className='homePageCol'>
+            <div className='homePageTitleHolder'>
+              <p className='homePageTitle'>Find your new home,<br></br>from home.</p>
             </div>
-            <Row className={classes.ButtonRow}>
-              <Col span={12} className={classes.Col1}>
+            <Row className='homePageButtonRow'>
+              <Col span={7} className='homePageCol1-1'>
                 <Link to="/finding"><Button color='#00A8E8' title="Find a Space"/></Link>
-                <p className={classes.ButtonDescription}>Free to subscribe. New listings are emailed every Friday. Listings only available through the newsletter.</p>
+                <p className='homePageButtonDescription'>Free to subscribe. New listings are emailed every Friday. Listings only available through the newsletter.</p>
               </Col>
-              <Col span={12} className={classes.Col1}>
+              <Col span={7} className='homePageCol1-2'>
                 <Link to="/posting"><Button color='#C1839F' title="Post a Listing"/></Link>
-                <p className={classes.ButtonDescription}>Post your Listings by Friday; fees increase after 10am ET</p>
+                <p className='homePageButtonDescription'>Post your Listings by Friday; fees increase after 10am ET</p>
               </Col>
             </Row>
           </Col>
         </Row>
 
-        <div ref={howitworksRef} className={classes.HowItWorksContainer}>
-          <Row className={classes.HowItWorksRow}>
-            <Col span={24} className={classes.HowItWorksTitleContainer}>
-              <div className={classes.HowItWorksTitle1}>how it works</div>
-              <div className={classes.HowItWorksTitle2}>Get the Listings</div>
+        <div ref={howitworksRef} className='homePageHowItWorksContainer'>
+          <Row className='homePageHowItWorksRow'>
+            <Col span={24} className='homePageHowItWorksTitleContainer'>
+              <div className='homePageHowItWorksTitle1'>how it works</div>
+              <div className='homePageHowItWorksTitle2'>Get the Listings</div>
             </Col>
             {howItWorksGet.map(({title, image, description}, i) => (
-              <Col key={i} span={6} className={classes.TileContainerCol}>
+              <Col key={i} span={6} className='TileContainerCol'>
                 <Tile title={title} image={image} description={description} />
               </Col>
             ))}
-            <Col span={24} className={classes.HowItWorksTitleContainer}>
-              <div className={classes.HowItWorksTitle2}>Post Listings</div>
+            <Col span={24} className='homePageHowItWorksTitleContainer'>
+              <div className='homePageHowItWorksTitle2'>Post Listings</div>
             </Col>
             {howItWorksPost.map(({title, image, description}, i) => (
-              <Col key={i} span={6} className={classes.TileContainerCol}>
+              <Col key={i} span={6} className='homePageTileContainerCol'>
                 <Tile title={title} image={image} description={description} />
               </Col>
             ))}
@@ -129,31 +148,32 @@ const Home = () => {
         </div>
 
         <div>
-          <Row className={classes.HowItWorksRow}>
-            <Col span={24}><p className={classes.CEOHeaderText}>word from C.E.O</p></Col>
+          <Row className='homePageHowItWorksRow'>
+            <Col span={24}><p className='homePageCEOHeaderText'>word from C.E.O</p></Col>
             <Col span={3}></Col>
-            <Col span={21} className={classes.CEOCol}>
-              <div style={{position: 'absolute'}}><Image className={classes.CEOImage} src={defaultImage} /></div>
-              <div className={classes.CEOText}>Text from CEO</div>
+            <Col span={21} className='homePageCEOCol'>
+              <div style={{position: 'absolute'}}><Image className='homePageCEOImage' src={defaultImage} /></div>
+              <div className='homePageCEOText'>Text from CEO</div>
             </Col>
           </Row>
         </div>
 
         <div ref={aboutusRef}>
-          <Row className={classes.AboutusRow}>
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '30px'}}>About us</div>
+          <Row className='homePageAboutusRow'>
+            <div className='homePageAboutusText'>About us</div>
           </Row>
         </div>
 
         <div>
-          <Row className={classes.OptionalinfoRow}>
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '30px'}}>Optional Info</div>
+          <Row className='homePageOptionalinfoRow'>
+            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '30px', zIndex: '8'}}>Optional Info</div>
           </Row>
         </div>
 
       </div>
       <Footer />
     </div>
+    </CSSTransition>
   );
 }
 

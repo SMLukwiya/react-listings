@@ -1,18 +1,29 @@
-.Container {
+/* CSSTransition */
+.createPage--enter {
+  opacity: 0;
+}
+
+.createPage--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+/* Page CSS */
+.createPageContainer {
   background-color: #F5F5F5;
   height: 100vh;
 }
 
-.Row {
+.createPageRow {
   padding-top: 130px;
   background-color: #F5F5F5;
 }
 
-.BackButton {
+.createPageBackButton {
   margin-top: 40px;
 }
 
-.Title {
+.createPageTitle {
   font-family: ITCAvantGardeNormal;
   font-size: 26px;
   margin-left: 11%;
@@ -20,13 +31,13 @@
   margin-bottom: 7%;
 }
 
-.EntryRow {
+.createPageEntryRow {
   display: flex;
   width: 100%;
   margin-bottom: 20px;
 }
 
-.EntryTitle {
+.createPageEntryTitle {
   width: 20%;
   text-align: center;
   background-color: #C1839F;
@@ -38,38 +49,38 @@
   height: 28px;
 }
 
-.InputContainer {
+.createPageInputContainer {
   width: 70%;
 }
 
-.Input {
+.createPageInput {
   width: 100%;
   outline: 0;
   height: 28px;
   border: 0;
 }
 
-.TextBox {
+.createPageTextBox {
   width: 100%;
   height: 250px;
   border: 0;
   outline: 0;
 }
 
-.ImageContainer {
+.createPageImageContainer {
   width: 70%;
   display: flex;
   flex-wrap: wrap;
 }
 
-.ImageInput {
+.createPageImageInput {
   width: 40%;
   margin: 6px;
   background-color: #FFF;
   height: 145px;
 }
 
-.ButtonContainer {
+.createPageButtonContainer {
   height: 40px;
   display: flex;
   justify-content: flex-end;

@@ -1,0 +1,153 @@
+/* CSSTransition */
+.homePage--enter {
+  opacity: 0;
+}
+.homePage--enter-active {
+  opacity: 1;
+  transition: opacity .8s
+}
+
+/* Page CSS */
+.homePageContainer {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.backgroundImageContainer {
+  top: calc(100% - 350px);
+  height: 350px;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  background-image: url('../../assets/LOGO.svg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-attachment: fixed;
+  background-size: contain;
+  background-clip: content-box;
+  background-origin:content-box;
+  opacity: 0.15;
+}
+
+.homePageMenuRow {
+  margin-top: 30px;
+}
+
+.homePageButtonRow {
+  margin-top: 70px;
+  width: 90%;
+  margin-left: 17%;
+}
+
+.homePageCol1-1 {
+  height: 60px;
+}
+
+.homePageCol1-2 {
+  height: 60px;
+  margin-left: 200px;
+}
+
+
+.homePageCol {}
+
+.homePageTitleHolder {
+  margin-top: 55px;
+  margin-left: 20%;
+  width: 400px;
+}
+
+.homePageTitle {
+  font-size: 35px;
+  font-family: ITCAvantGardeStdBold;
+  text-align: right;
+}
+
+.homePageButtonDescription {
+  font-size: 13px;
+  width: 175px;
+  margin-top: 13px;
+  margin-left: 25px;
+  font-family: ITCAvantGardeNormal;
+}
+
+.homePageHowItWorksContainer {
+  margin-top: 150px;
+}
+
+.homePageHowItWorksRow {
+  width: 80%;
+  margin: 10px auto 100px auto;
+}
+
+.homePageHowItWorksTitleContainer {
+  text-align: right;
+}
+
+.homePageHowItWorksTitle1 {
+  font-size: 15px;
+  margin-right: 5%;
+  margin-bottom: 50px;
+  font-family: ITCAvantGardeNormal;
+}
+
+.homePageHowItWorksTitle2 {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  font-size: 13px;
+  margin-right: 5%;
+  font-family: ITCAvantGardeNormal;
+}
+
+.homePageTileContainerCol {
+  margin: 5px auto 50px auto;
+}
+
+.homePageCEOCol {
+  /* height: 350px; */
+}
+
+.homePageCEOHeaderText {
+  font-family: ITCAvantGardeNormal
+}
+
+.homePageCEOImage {
+  height: 350px;
+  width: 390px;
+  z-index: 8;
+}
+
+.homePageCEOText {
+  position: relative;
+  margin-top: 35px;
+  margin-left: 17%;
+  height: 330px;
+  width: 70%;
+  background-color: rgba(0,0,0, 0.2);
+}
+
+.homePageAboutusRow {
+  margin: 0 auto 30px auto;
+  width: 80%;
+  height: 350px;
+  background-color: rgba(0,0,0,0.1);
+  font-family: ITCAvantGardeNormal;
+  z-index: 11;
+}
+
+.homePageAboutusText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  text-align: center;
+  z-index: 8;
+}
+
+.homePageOptionalinfoRow {
+  margin: 100px auto 0 auto;
+  width: 80%;
+  height: 250px;
+  background-color: rgba(0,0,0,0.1);
+  font-family: ITCAvantGardeNormal;
+}

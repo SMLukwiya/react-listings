@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
+import {CSSTransition} from 'react-transition-group';
 
-import classes from './posting.module.css';
+import './posting.css';
 import Header from '../../../components/Header';
 import Menu from '../../../components/Menu';
 import BackButton from '../../../components/common/BackButton';
-import Button from '../../../components/common/Button';
+import Background from '../../../components/common/Background';
+import AnimatedButton from '../../../components/common/Button/Animated';
 
 const category = [
   {
@@ -24,39 +26,49 @@ const category = [
 ]
 
 const Confirm = (props) => {
+  const [showPage, setShowPage] = useState(false);
+
+  useEffect(() => {setShowPage(true)}, []);
 
   const Category = ({title, entries}) => (
-    <Row className={classes.CategoryContainer}>
-      <Col span={3} className={classes.CategoryTitle}>{title}</Col>
+    <Row className='howItWorksCategoryContainer'>
+      <Col span={3} className='howItWorksCategoryTitle'>{title}</Col>
       <Col span={19}>
         <Row>
-        {entries.map(entry => <div key={entry} className={classes.CategoryText}>{entry}</div>)}
+        {entries.map(entry => <div key={entry} className='howItWorksCategoryText'>{entry}</div>)}
         </Row>
       </Col>
     </Row>
   );
 
   return (
-    <div className={classes.Container}>
-      <Header color='#C1839F' />
-      <Row className={classes.Row}>
-        <Col span={4}>
-          <Menu />
-        </Col>
-        <Col span={1} className={classes.BackButton}>
-          <BackButton history={props.history} />
-        </Col>
-        <Col span={14} className={classes.HowItWorksCol}>
-          <div className={classes.Title}>how posting a Listing works</div>
-          {category.map(({title, entries}) => <Category key={title} title={title} entries={entries} /> )}
-          <div className={classes.ButtonContainer}>
-            <Link to="/posting/howitworks/create">
-              <Button title='next' small color='#C1839F' />
-            </Link>
-          </div>
-        </Col>
-      </Row>
-    </div>
+    <CSSTransition
+      in={showPage}
+      timeout={800}
+      classNames="howItWorks-"
+      unmountOnExit>
+      <div className='howItWorksContainer'>
+        <Background />
+        <Header color='#C1839F' />
+        <Row className='howItWorksRow'>
+          <Col span={4}>
+            <Menu />
+          </Col>
+          <Col span={1} className='howItWorksBackButton'>
+            <BackButton history={props.history} />
+          </Col>
+          <Col span={14} className='HowItWorksCol'>
+            {/*<div className='Title'>how posting a Listing works</div>*/}
+            {category.map(({title, entries}) => <Category key={title} title={title} entries={entries} /> )}
+            <div className='howItWorksButtonContainer'>
+              <Link to="/posting/howitworks/create">
+                <AnimatedButton title='next' small color='#C1839F' />
+              </Link>
+            </div>
+          </Col>
+        </Row>
+      </div>
+    </CSSTransition>
   )
 }
 export default Confirm;

@@ -1,25 +1,36 @@
-.Container {
+/* CSSTransition */
+.confirmPost--enter {
+  opacity: 0;
+}
+
+.confirmPost--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+/* Page CSS */
+.confirmPostContainer {
   background-color: #F5F5F5;
   height: 100vh;
 }
 
-.Row {
+.confirmPostRow {
   padding-top: 130px;
   background-color: #F5F5F5;
 }
 
-.BackButton {
+.confirmPostBackButton {
   margin-top: 40px;
 }
 
-.Title {
+.confirmPostTitle {
   font-family: ITCAvantGardeStdMedium;
   font-size: 26px;
   margin-left: 11%;
   margin-top: 40px;
 }
 
-.ButtonContainer {
+.confirmPostButtonContainer {
   height: 40px;
   display: flex;
   justify-content: flex-end;
@@ -27,29 +38,29 @@
   margin-top: 100px;
 }
 
-.TextContainer {
+.confirmPostTextContainer {
   margin: 15% 0 25% 0;
   display: flex;
   justify-content: space-between;
   width: 80%
 }
 
-.Text {
+.confirmPostText {
   font-family: ITCAvantGardeNormal;
   font-size: 15px;
   color: #C1839F;
 }
 
-.Text a {
+.confirmPostText a {
   color: #C1839F;
   text-decoration: none;
 }
 
-.Text:hover {
+.confirmPostText:hover {
   cursor: pointer;
 }
 
-.Text a:hover {
+.confirmPostText a:hover {
   color: #C1839F;
   text-decoration: none;
 }

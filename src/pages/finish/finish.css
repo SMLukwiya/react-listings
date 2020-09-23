@@ -1,0 +1,44 @@
+/* CSSTransition */
+.finishPage--enter {
+  opacity: 0;
+}
+
+.finishPage--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+/* Page CSS */
+.finishPageContainer {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.finishPageRow {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.finishPageBackButton {
+  margin-top: 40px;
+}
+
+.finishPageTitle {
+  font-family: ITCAvantGardeNormal;
+  font-size: 26px;
+  margin-left: 11%;
+  margin-top: 40px;
+  margin-bottom: 30%;
+}
+
+.finishPageText {
+  font-family: ITCAvantGardeNormal;
+}
+
+.finishPageButtonContainer {
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 12%;
+  margin-top: 100px;
+}

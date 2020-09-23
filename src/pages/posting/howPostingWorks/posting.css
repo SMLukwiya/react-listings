@@ -1,14 +1,25 @@
-.Container {
+/* CSSTransition */
+.howItWorks--enter {
+  opacity: 0;
+}
+
+.howItWorks--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+/* Page CSS */
+.howItWorksContainer {
   background-color: #F5F5F5;
   height: 100vh;
 }
 
-.Row {
+.howItWorksRow {
   padding-top: 130px;
   background-color: #F5F5F5;
 }
 
-.BackButton {
+.howItWorksBackButton {
   margin-top: 40px;
 }
 
@@ -16,21 +27,21 @@
 
 }
 
-.Title {
+.howItWorksTitle {
   font-family: ITCAvantGardeNormal;
   font-size: 26px;
   margin-left: 11%;
   margin-top: 40px;
 }
 
-.CategoryContainer {
+.howItWorksCategoryContainer {
   display: flex;
   margin-bottom: 40px;
   flex-wrap: wrap;
   margin-top: 8%;
 }
 
-.CategoryTitle {
+.howItWorksCategoryTitle {
   font-family: ITCAvantGardeNormal;
   font-size: 15px;
   background-color: #C1839F;
@@ -42,7 +53,7 @@
   color: #FFF;
 }
 
-.CategoryText {
+.howItWorksCategoryText {
   font-family: ITCAvantGardeNormal;
   font-size: 15px;
   background-color: grey;
@@ -53,10 +64,22 @@
   margin-bottom: 10px;
 }
 
-.ButtonContainer {
+.howItWorksButtonContainer {
   height: 40px;
   display: flex;
   justify-content: flex-end;
   margin-right: 9%;
   margin-top: 100px;
+}
+
+.howItWorksButton {
+  height: 100%;
+  border: 0;
+  border-radius: 30px;
+  width: 180px;
+  padding: 8px 5px;
+  background-color: #C1839F;
+  display: flex;
+  justify-content: center;
+  outline: 0;
 }

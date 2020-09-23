@@ -1,22 +1,33 @@
-.Container {
+/* CSSTransition */
+.congratsPage--enter {
+  opacity: 0;
+}
+
+.congratsPage--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+/* Page CSS */
+.congratsPageContainer {
   background-color: #F5F5F5;
   height: 100vh;
 }
 
-.Row {
+.congratsPageRow {
   padding-top: 130px;
   background-color: #F5F5F5;
 }
 
-.BackButton {
+.congratsPageBackButton {
   margin-top: 40px;
 }
 
-.CongratsCol {
+.congratsPageCol {
   padding-left: 7%;
 }
 
-.Title {
+.congratsPageTitle {
   font-family: ITCAvantGardeStdMedium;
   font-size: 30px;
   margin-top: 100px;
@@ -24,20 +35,20 @@
   color: #403D39;
 }
 
-.Text {
+.congratsPageText {
   font-family: ITCAvantGardeNormal;
   font-size: 14px;
   margin-bottom: 40px;
 }
 
-.ButtonContainer {
+.congratsPageButtonContainer {
   height: 40px;
   display: flex;
   justify-content: flex-end;
   margin-right: 30%
 }
 
-.Button {
+.congratsPageButton {
   height: 100%;
   border: 0;
   border-radius: 30px;
@@ -47,15 +58,15 @@
   outline: none;
 }
 
-.Button:hover {
+.congratsPageButton:hover {
   cursor: pointer;
 }
 
-.Button:active {
+.congratsPageButton:active {
   outline: none;
 }
 
-.ButtonText {
+.congratsPageButtonText {
   font-size: 18px;
   color: #FFFFFF;
   font-family: ITCAvantGardeStdMedium;

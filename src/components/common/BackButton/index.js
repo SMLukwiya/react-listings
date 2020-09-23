@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'antd';
 
 import classes from './back.module.css';
-const arrow = require('../../../assets/icons/arrow.png');
+const arrow = require('../../../assets/icons/right-chevron.png');
 const rectangle = require('../../../assets/icons/rectangle.png');
 
 const backButton = ({history}) => (

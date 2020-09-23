@@ -5,6 +5,7 @@ import classes from './button.module.css';
 const button = ({title, color, small, click}) => {
   const style = {
     height: '100%',
+    width: '100%',
     border: 0,
     borderRadius: '30px',
     width: '220px',
@@ -12,11 +13,13 @@ const button = ({title, color, small, click}) => {
     backgroundColor: color ? color : null,
     display: 'flex',
     justifyContent: 'center',
-    outline: 'none'
+    outline: 'none',
+    cursor: 'pointer'
   }
 
   const smallStyle = {
     height: '100%',
+    width: '100%',
     border: 0,
     borderRadius: '30px',
     width: '100%',
@@ -24,7 +27,8 @@ const button = ({title, color, small, click}) => {
     backgroundColor: color ? color : null,
     display: 'flex',
     justifyContent: 'center',
-    outline: 'none'
+    outline: 'none',
+    cursor: 'pointer'
   }
 
   return (
