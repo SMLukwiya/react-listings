@@ -46,7 +46,7 @@ const Confirm = (props) => {
 
   useEffect(() => setShowPage(true), []);
 
-  const switchModal = () => setModalOpen(!modalOpen);
+  const switchModal = () => setModalOpen(prevState => !prevState);
 
   const style={
     height: '430px',
