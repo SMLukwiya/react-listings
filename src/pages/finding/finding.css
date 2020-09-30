@@ -78,3 +78,10 @@
   font-family: ITCAvantGardeNormal;
   margin-right: 3px;
 }
+
+.error {
+  font-size: 10px;
+  color: red;
+  font-family: ITCAvantGardeNormal;
+  margin: 5px;
+}

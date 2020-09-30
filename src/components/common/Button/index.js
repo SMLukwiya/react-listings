@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './button.module.css';
 
-const button = ({title, color, small, click}) => {
+const button = ({title, color, small, click, enabled}) => {
   const style = {
     height: '100%',
     width: '100%',
@@ -31,8 +31,14 @@ const button = ({title, color, small, click}) => {
     cursor: 'pointer'
   }
 
+  let clickButton = () => {}
+
+  if (enabled) {
+    clickButton = click
+  }
+
   return (
-    <div className={classes.Container} onClick={click}>
+    <div className={classes.Container} onClick={clickButton}>
       <button style={small ? smallStyle : style}>
         <p className={classes.ButtonText}>{title}</p>
       </button>

@@ -9,8 +9,7 @@ import Menu from '../../../components/Menu';
 import BackButton from '../../../components/common/BackButton';
 import Background from '../../../components/common/Background';
 import AnimatedButton from '../../../components/common/Button/Animated';
-
-const { TextArea } = Input;
+const defaultImage = require('../../../assets/default.png');
 
 const Confirm = (props) => {
   const [showPage, setShowPage] = useState(false);
@@ -28,7 +27,7 @@ const Confirm = (props) => {
         <Header color='#C1839F' />
         <Row className='createPageRow'>
           <Col span={4}>
-            <Menu />
+            <Menu history={props.history} />
           </Col>
           <Col span={2} className='createPageBackButton'>
             <BackButton history={props.history} />
@@ -50,7 +49,7 @@ const Confirm = (props) => {
                 <Row className='createPageEntryRow'>
                   <Col className='createPageEntryTitle'>images</Col>
                   <Col className='createPageImageContainer'>
-                    {[1,2,3,4].map((item) => <div key={item} className='createPageImageInput' />)}
+                    {[1,2,3,4].map((item) => <img src={defaultImage} key={item} className='createPageImageInput' />)}
                   </Col>
                 </Row>
               </Col>

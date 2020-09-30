@@ -52,7 +52,7 @@ const Confirm = (props) => {
         <Header color='#C1839F' />
         <Row className='howItWorksRow'>
           <Col span={4}>
-            <Menu />
+            <Menu history={props.history} />
           </Col>
           <Col span={1} className='howItWorksBackButton'>
             <BackButton history={props.history} />

@@ -55,13 +55,26 @@
   font-family: ITCAvantGardeNormal;
   font-size: 12px;
   margin-left: 15px;
-  margin-top: 8px;
+  margin-top: 15px;
 }
 
 .signInNextContainer {
   display: flex;
   justify-content: flex-end;
   margin-right: 7%;
-  margin-top: 8%;
+  margin-top: 7%;
   height: 40px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .signInNextContainer {
+    margin-top: 0px
+  }
+}
+
+.error {
+  font-size: 10px;
+  color: red;
+  font-family: ITCAvantGardeNormal;
+  margin: 5px;
 }

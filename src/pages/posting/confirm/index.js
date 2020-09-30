@@ -26,7 +26,7 @@ const Confirm = (props) => {
         <Header color='#C1839F' />
         <Row className='confirmPostRow'>
           <Col span={4}>
-            <Menu />
+            <Menu history={props.history} />
           </Col>
           <Col span={2} className='confirmPostBackButton'>
             <BackButton history={props.history} />

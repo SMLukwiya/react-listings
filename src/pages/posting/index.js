@@ -60,14 +60,6 @@ const Confirm = (props) => {
   }
 
   const PostModal = () => (
-    <CSSTransition
-      in={modalOpen}
-      timeout={800}
-      classNames="modal-"
-      unmountOnExit
-      appear
-      exit
-      >
       <div className="modalContainer">
         <div className='postingPageClose' onClick={switchModal}>
           <Image preview={false} src={arrow} className='postingPageArrow1' />
@@ -84,7 +76,6 @@ const Confirm = (props) => {
           </div>
         </div>
       </div>
-    </CSSTransition>
   );
 
   return (
@@ -99,7 +90,7 @@ const Confirm = (props) => {
         <Header color='#C1839F' />
         <Row className='postingPageRow'>
           <Col span={4}>
-            <Menu />
+            <Menu history={props.history} />
           </Col>
           <Col span={1} className='postingPageBackButton'>
             <BackButton history={props.history} />
@@ -114,11 +105,20 @@ const Confirm = (props) => {
               ))}
             </Row>
             <div className='postingPageButtonContainer'>
-                <Button title='create my listing' color='#C1839F' small click={switchModal} />
+                <Button title='create my listing' color='#C1839F' small click={switchModal} enabled />
             </div>
           </Col>
         </Row>
-        {<PostModal />}
+        <CSSTransition
+          in={modalOpen}
+          timeout={800}
+          classNames="modal-"
+          unmountOnExit
+          appear
+          exit
+          >
+          <PostModal />
+        </CSSTransition>
       </div>
     </CSSTransition>
   )
