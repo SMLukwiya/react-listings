@@ -1,9 +1,14 @@
 import React from 'react';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import ReduxThunk from 'redux-thunk';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+
+import rootReducer from './store/reducers';
 
 // Pages
 import Home from './pages/Home';
@@ -22,25 +27,29 @@ import Finish from './pages/finish';
 // ant design
 import 'antd/dist/antd.css';
 
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/signin" component={Signin} />
-        <Route path="/confirm" component={Confirm} />
-        <Route path="/faqs" component={FAQs} />
-        <Route exact path="/posting" component={Posting} />
-        <Route exact path="/posting/howitworks" component={HowPostingWorks} />
-        <Route exact path="/posting/howitworks/create" component={CreateListing} />
-        <Route exact path="/posting/howitworks/create/confirm" component={ConfirmListing} />
-        <Route exact path="/post/howitworks/create/confirm/payment" component={Payment} />
-        <Route path="/post/howitworks/create/confirm/payment/finish" component={Finish} />
-        <Route  exact path="/finding" component={FindAListing} />
-        <Route path="/finding/congrats" component={Congrats} />
-        <Route path="/finish" component={Finish} />
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/signin" component={Signin} />
+          <Route path="/confirm" component={Confirm} />
+          <Route path="/faqs" component={FAQs} />
+          <Route exact path="/posting" component={Posting} />
+          <Route exact path="/posting/howitworks" component={HowPostingWorks} />
+          <Route exact path="/posting/howitworks/create" component={CreateListing} />
+          <Route exact path="/posting/howitworks/create/confirm" component={ConfirmListing} />
+          <Route exact path="/post/howitworks/create/confirm/payment" component={Payment} />
+          <Route path="/post/howitworks/create/confirm/payment/finish" component={Finish} />
+          <Route  exact path="/finding" component={FindAListing} />
+          <Route path="/finding/congrats" component={Congrats} />
+          <Route path="/finish" component={Finish} />
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 

@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { Row, Col, Checkbox } from 'antd';
 import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { subscribe } from '../../store/actions';
+import {checkValidity} from '../../utils';
 
 import './finding.css';
 import Header from '../../components/Header';
@@ -12,14 +15,14 @@ import Input from '../../components/common/Input';
 import Background from '../../components/common/Background';
 import Button from '../../components/common/Button';
 import Loader from '../../components/common/Loader';
-import {checkValidity} from '../../utils';
 
 const Confirm = (props) => {
   const [showPage, setShowPage] = useState(false);
   const [state, setState] = useState({ elementType: 'input', elementConfig: { type: 'email' }, value: '', validation: { required: true }, valid: false, message: '', touched: false });
-  const [loading, setLoading] = useState(false)
+  const user = useSelector(reduxState => reduxState.user);
 
   useEffect(() => {setShowPage(true)}, []);
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     const newState = {...state};
@@ -32,26 +35,15 @@ const Confirm = (props) => {
     setState(newState);
   }
 
-  const subscribe = () => {
-    setLoading(true);
-
+  const onClickSubscribe = useCallback(() => {
     const data = { email: state.value };
 
-    axios.post('https://listings.dsnibro.com/api/v1/api_users', {
-      email: data.email
-    })
-    .then(response => {
-      console.log(response)
-      setLoading(false);
-      setTimeout(() => props.history.push('/finding/congrats'), 1000)
-    })
-    .catch(err => {
-      setLoading(false);
-      const {response: {data: {errors: { email }}}} = err;
+    dispatch(subscribe(data, (error) => {
+      if(error) {console.log('error', error); return setState({...state, message: error, value: ''});}
 
-      setState({...state, message: email[0], value: ''})
-    })
-  }
+      setTimeout(() => props.history.push('/finding/congrats'), 1000);
+    }))
+  }, [dispatch, state.value]);
 
   return (
     <CSSTransition
@@ -82,7 +74,7 @@ const Confirm = (props) => {
             </div>
             <div className='findingPageButtonContainer'>
               <span>
-                {loading ? <Loader /> :<Button small title="subscribe" color="#00A8E8" enabled={state.valid} click={subscribe} />}
+                {user.loading ? <Loader /> :<Button small title="subscribe" color="#00A8E8" enabled={state.valid} click={onClickSubscribe} />}
               </span>
             </div>
           </Col>
