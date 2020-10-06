@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { Row, Col } from 'antd';
 import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
+import { useDispatch } from 'react-redux';
+import { postlisting } from '../../../store/actions';
 
 import './confirm.css';
 import Header from '../../../components/Header';
@@ -14,6 +16,17 @@ const Confirm = (props) => {
   const [showPage, setShowPage] = useState(false);
 
   useEffect(() => {setShowPage(true)}, []);
+  const dispatch = useDispatch();
+
+  const onConfirmListing = useCallback(() => {
+    dispatch(postlisting((error) => {
+      if(error) return console.log('Error', error);
+
+      setTimeout(() => {
+        props.history.push('/post/howitworks/create/confirm/payment')
+      }, 1000)
+    }))
+  }, [dispatch])
 
   return (
     <CSSTransition
@@ -42,9 +55,9 @@ const Confirm = (props) => {
               </p>
             </div>
             <div className='confirmPostButtonContainer'>
-              <Link to="/post/howitworks/create/confirm/payment">
-                <Button title='proceed to check out' small color='#C1839F' />
-              </Link>
+              <span to="/post/howitworks/create/confirm/payment">
+                <Button title='proceed to check out' small color='#C1839F' click={onConfirmListing} enabled />
+              </span>
             </div>
           </Col>
         </Row>

@@ -49,6 +49,18 @@
   height: 28px;
 }
 
+.createPageButtons {
+  outline: none;
+  margin-top: 15px;
+  border: 1px solid #eee;
+  background-color: #C1839F;
+}
+
+.createPageButtons:hover {
+  cursor: pointer;
+  background-color: #C19499
+}
+
 .createPageInputContainer {
   width: 70%;
 }
@@ -73,11 +85,34 @@
   flex-wrap: wrap;
 }
 
+.image-item {
+  width: 47%;
+}
+
 .createPageImageInput {
-  width: 40%;
-  margin: 6px;
-  background-color: #FFF;
-  height: 145px;
+  width: 100%;
+  padding: 2px;
+  height: 155px;
+  background-color: transparent;
+}
+
+.image-item__btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageButton {
+  outline: none;
+  color: #FFF;
+  margin-top: 2px 0 3px 0;
+  border: 1px solid #eee;
+  background-color: #C1839F;
+}
+
+.imageButton:hover {
+  cursor: pointer;
+  background-color: #C19499
 }
 
 .createPageButtonContainer {

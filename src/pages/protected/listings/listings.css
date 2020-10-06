@@ -1,0 +1,44 @@
+/* CSSTransition */
+.allListings--enter {
+  opacity: 0;
+}
+
+.allListings--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+/* Page CSS */
+.allListingsContainer {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.allListingsRow {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.allListingsBackButton {
+  margin-top: 40px;
+}
+
+.allListingsTitle {
+  font-family: ITCAvantGardeNormal;
+  font-size: 26px;
+  margin-left: 11%;
+  margin-top: 40px;
+  margin-bottom: 30%;
+}
+
+.allListingsText {
+  font-family: ITCAvantGardeNormal;
+}
+
+.allListingsButtonContainer {
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 12%;
+  margin-top: 100px;
+}

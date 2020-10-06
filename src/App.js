@@ -23,11 +23,12 @@ import HowPostingWorks from './pages/posting/howPostingWorks';
 import Congrats from './pages/congrats';
 import FindAListing from './pages/finding';
 import Finish from './pages/finish';
+import ListingsProtected from './pages/protected/listings';
 
 // ant design
 import 'antd/dist/antd.css';
 
-const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+export const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route  exact path="/finding" component={FindAListing} />
           <Route path="/finding/congrats" component={Congrats} />
           <Route path="/finish" component={Finish} />
+          <ListingsProtected path='/getlistings/listings' isUserAuthenticated />
         </Switch>
       </Router>
     </Provider>

@@ -6,6 +6,8 @@ export const SIGNIN = 'signin';
 export const SIGNIN_SUCCESS = 'signin_success';
 export const SIGNIN_FAILED = 'signin_failed';
 
+export const CHOOSELISTING = 'chooselisting';
+
 export const UPLOADLISTING = 'uploadlisting';
 export const UPLOADLISTING_SUCCESS = 'uploadlisting_success';
 export const UPLOADLISTING_FAILED = 'uploadlisting_failed';

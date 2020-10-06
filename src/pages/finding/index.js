@@ -16,7 +16,7 @@ import Background from '../../components/common/Background';
 import Button from '../../components/common/Button';
 import Loader from '../../components/common/Loader';
 
-const Confirm = (props) => {
+const Finding = (props) => {
   const [showPage, setShowPage] = useState(false);
   const [state, setState] = useState({ elementType: 'input', elementConfig: { type: 'email' }, value: '', validation: { required: true }, valid: false, message: '', touched: false });
   const user = useSelector(reduxState => reduxState.user);
@@ -43,7 +43,7 @@ const Confirm = (props) => {
 
       setTimeout(() => props.history.push('/finding/congrats'), 1000);
     }))
-  }, [dispatch, state.value]);
+  }, [dispatch, state, props.history]);
 
   return (
     <CSSTransition
@@ -55,13 +55,13 @@ const Confirm = (props) => {
         <Background />
         <Header color='#00A8E8' />
         <Row className='findingPageRow'>
-          <Col span={4} style={{marginTop: '40px'}}>
+          <Col xl={4} lg={4} md={4} sm={4} xs={4} style={{marginTop: '40px'}}>
             <Menu history={props.history} />
           </Col>
-          <Col span={2} className='findingPageBackButton'>
+          <Col xl={2} lg={2} md={2} sm={2} xs={2} className='findingPageBackButton'>
             <BackButton history={props.history} />
           </Col>
-          <Col span={18} className='findingPageFindingCol'>
+          <Col xl={18} lg={18} md={18} sm={18} xs={18} className='findingPageFindingCol'>
             <div className='findingPageTitle'>Subscribe to Listings Project</div>
             <div className='findingPageText'>You will receive our email with new listings every Friday</div>
             <div className='findingPageEmail'>enter your email here</div>
@@ -84,4 +84,4 @@ const Confirm = (props) => {
   )
 }
 
-export default Confirm;
+export default Finding;

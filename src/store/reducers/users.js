@@ -1,5 +1,4 @@
 import { SUBSCRIBE, SUBSCRIBE_SUCCESS, SUBSCRIBE_FAILED, SIGNIN } from '../actions/types';
-import axios from 'axios';
 
 const initialState = {
   user: {
@@ -16,7 +15,6 @@ export default (state = initialState, action) => {
         ...state,
         loading: true
       }
-      break;
 
     case SUBSCRIBE_SUCCESS:
       return {

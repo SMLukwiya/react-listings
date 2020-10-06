@@ -2,31 +2,32 @@ import axios from 'axios';
 
 import { SUBSCRIBE, SUBSCRIBE_SUCCESS, SUBSCRIBE_FAILED, SIGNIN, SIGNIN_SUCCESS, SIGNIN_FAILED } from './types';
 
-export const subscribe = (data, callback) => {
+export const subscribe = ({email}, callback) => {
   return dispatch => {
     dispatch({ type: SUBSCRIBE });
-    console.log(data)
+    console.log(email)
     return axios.post('https://listings.dsnibro.com/api/v1/api_users', {
-        email: data.email
+        email: email
         })
         .then(response => {
           console.log(response)
-          const { data: { data: { data } }} = response;
+          const { data: { data: { api_token, user_role } }} = response;
 
           dispatch({
             type: SUBSCRIBE_SUCCESS,
             payload: {
-              token: data.api_token,
-              userrole: data. user_role
+              token: api_token,
+              userrole: user_role
             }
           });
 
-          callback(null);
+          callback();
         })
         .catch(err => {
           dispatch({
             type: SUBSCRIBE_FAILED
           })
+          console.log(err)
 
           const { response: { data: { errors } } } = err;
           console.log(errors)

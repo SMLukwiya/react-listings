@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Row, Col } from 'antd';
 import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
+import { useSelector } from 'react-redux';
 
 import './congrats.css';
 import Header from '../../components/Header';
@@ -12,6 +13,8 @@ import Button from '../../components/common/Button';
 
 const Confirm = (props) => {
   const [showPage, setShowPage] = useState(false);
+  const user = useSelector(state => state.user)
+  console.log(user.user);
 
   useEffect(() => {setShowPage(true)}, []);
 
