@@ -15,7 +15,8 @@ const chat = require('../../assets/icons/chatbubble.svg');
 const clock = require('../../assets/icons/clockicon.svg');
 const emailFrom = require('../../assets/icons/emailfromus.svg');
 const form = require('../../assets/icons/form.svg');
-const arrow = require('../../assets/icons/right-chevron.png');
+const arrow = require('../../assets/icons/arrow.svg');
+const cancel = require('../../assets/icons/cancel.png');
 
 const faqs = [
   {
@@ -61,11 +62,12 @@ const Confirm = (props) => {
 
   const PostModal = () => (
       <div className="modalContainer">
-        <div className='postingPageClose' onClick={switchModal}>
-          <Image preview={false} src={arrow} className='postingPageArrow1' />
-          <div className='postingPageClose1' />
-          <div className='postingPageClose2' />
-          <Image preview={false} src={arrow} className='postingPageArrow2' />
+        <div className='postingPageCloseContainer' onClick={switchModal}>
+          <div className='postingPageClose'>
+            <Image preview={false} src={arrow} className='postingPageArrow1' />
+            <Image preview={false} src={cancel} className='cancelIcon' />
+            <Image preview={false} src={arrow} className='postingPageArrow2' />
+          </div>
         </div>
         <div>
           <div className='ModalTitle'>sign in to continue</div>

@@ -57,7 +57,7 @@ const Confirm = (props) => {
           <Col span={1} className='howItWorksBackButton'>
             <BackButton history={props.history} />
           </Col>
-          <Col span={14} className='HowItWorksCol'>
+          <Col span={18} className='HowItWorksCol'>
             {/*<div className='Title'>how posting a Listing works</div>*/}
             {category.map(({title, entries}) => <Category key={title} title={title} entries={entries} /> )}
             <div className='howItWorksButtonContainer'>

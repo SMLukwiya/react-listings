@@ -1,13 +1,11 @@
 .Container {
   box-sizing: border-box;
   display: flex;
+  align-items: center;
 }
 
 .ArrowImage {
-  transform: rotate(180deg);
-  margin-top: 12px;
   margin-left: 10px;
-  margin-right: 3px;
   height: 13px;
   width: 13px;
   transition: .2s;
@@ -15,7 +13,7 @@
 
 .RectangleImage {
   margin-right: -9px;
-  margin-top: 2px;
+  margin-top: 4px;
   height: 14px;
   width: 10px;
   padding-right: 10;
@@ -24,8 +22,9 @@
 }
 
 .back {
-  margin-top: 12px;
-  margin-left: 10px;
+  position: absolute;
+  margin-top: 11px;
+  margin-left: 35px;
   background-color: #000;
   width: 5px;
   height: 2px;
@@ -37,23 +36,22 @@
 }
 
 .Container:hover > .ArrowImage {
-  margin-top: 0;
-  height: 25px;
-  width: 20px;
+  margin-top: -10px;
+  transform: scale(1.7);
+  transform-origin: right;
   margin-left: 0;
-  direction: ltr;
 }
 
 .Container:hover > .RectangleImage {
-  margin-top: 2.5px;
-  margin-right: 0;
-  height: 10px;
-  width: 6px;
-  direction: ltr;
+  margin-top: 9px;
+  transform: rotate(45deg) scale(1.5);
+  transform-origin: right;
+  margin-right: 5px;
 }
 
 .Container:hover > .back {
-  width: 14px;
-  margin-left: 0;
-  direction: ltr;
+  transform: scaleX(3);
+  transform-origin: right;
+  margin-left: 35px;
+  margin-top: 9px;
 }

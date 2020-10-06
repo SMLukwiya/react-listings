@@ -101,12 +101,18 @@
   margin-bottom: 25%;
 }
 
-.postingPageClose {
-  height: 40px;
+.postingPageCloseContainer {
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 30px;
+}
+
+.postingPageClose {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
 }
 
 .postingPageClose:hover {
@@ -114,56 +120,43 @@
 }
 
 .postingPageArrow1 {
+  transform: rotate(180deg);
+  width: 17px;
+  height: 17px;
+  margin-top: 15px;
+  transition: .2s;
+}
+
+.cancelIcon {
   width: 13px;
-  margin-right: 4px;
-  margin-top: -2px;
-  transition: .3s;
+  height: 17px;
+  transition: .2s;
+  margin-left: -2px;
+  margin-right: -2px;
 }
 
 .postingPageArrow2 {
-  transform: rotate(180deg);
-  width: 13px;
-  margin-right: -14px;
-  margin-top: 3px;
-  transition: .3s;
-}
-
-.postingPageClose1 {
-  transform: rotate(45deg);
-  height: 25px;
-  width: 2px;
-  background-color: #000;
-  position: absolute;
-  transition: .3s;
-}
-
-.postingPageClose2 {
-  transform: rotate(-45deg);
-  height: 25px;
-  width: 2px;
-  background-color: #000;
-  transition: .3s;
-  position: absolute;
-}
-
-.postingPageClose:hover > .postingPageClose1 {
-  height: 15px;
-  width: 2px;
-}
-
-.postingPageClose:hover > .postingPageClose2 {
-  height: 15px;
-  width: 2px;
+  width: 17px;
+  height: 17px;
+  transition: .2s;
 }
 
 .postingPageClose:hover > .postingPageArrow1 {
-  width: 20px;
-  margin-right: 11px;
-  margin-top: -2px;
+  transform: rotate(180deg) scale(1.2);
+  transform-origin: left;
+  margin-top: 15px;
+  margin-right: -10px;
+}
+
+.postingPageClose:hover > .cancelIcon {
+  transform: scale(0.7);
+  transform-origin: center;
+
 }
 
 .postingPageClose:hover > .postingPageArrow2 {
-  width: 20px;
-  margin-right: -24px;
-  margin-top: 2px;
+  transform: scale(1.6);
+  transform-origin: left;
+  padding-left: 4px;
+  margin-top: -6px;
 }

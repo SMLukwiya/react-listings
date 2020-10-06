@@ -24,6 +24,7 @@ import Congrats from './pages/congrats';
 import FindAListing from './pages/finding';
 import Finish from './pages/finish';
 import ListingsProtected from './pages/protected/listings';
+import ListingProtected from './pages/protected/listing';
 
 // ant design
 import 'antd/dist/antd.css';
@@ -48,7 +49,8 @@ function App() {
           <Route  exact path="/finding" component={FindAListing} />
           <Route path="/finding/congrats" component={Congrats} />
           <Route path="/finish" component={Finish} />
-          <ListingsProtected path='/getlistings/listings' isUserAuthenticated />
+          <ListingsProtected exact path='/getlistings/listings' isUserAuthenticated />
+          <ListingProtected path='/getListings/listings/:id' isUserAuthenticated />
         </Switch>
       </Router>
     </Provider>
