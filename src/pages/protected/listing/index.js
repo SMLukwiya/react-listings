@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { Row, Col, Checkbox } from 'antd';
 import {Link, Route, Redirect} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
+import { useDispatch, useSelector } from 'react-redux';
 
 import './listing.css';
 import Header from '../../../components/Header';
@@ -9,13 +10,27 @@ import Menu from '../../../components/Menu';
 import BackButton from '../../../components/common/BackButton';
 import Button from '../../../components/common/Button';
 import Background from '../../../components/common/Background';
+import { fetchsinglelisting } from '../../../store/actions';
 
 const Listing = (props) => {
   const [showPage, setShowPage] = useState(false);
+  const state = useSelector(state => state.listings);
+  const { listings } = state;
 
+  const dispatch = useDispatch();
   useEffect(() => {
     setShowPage(true)
-  }, [React])
+  }, [React]);
+
+  const fetchListing = useCallback(() => {
+    if (listings.length) {
+      listings.find(item => item.property_id === props.match.params.id)
+    } else {
+      dispatch(fetchsinglelisting(props.match.params.id, error => {
+        if (error) return console.log(error);
+      }))
+      }
+    }, [dispatch, props.match.params.id]);
 
   return (
     <CSSTransition
@@ -34,7 +49,7 @@ const Listing = (props) => {
             <BackButton history={props.history} />
           </Col>
           <Col xl={18} lg={18} md={18} sm={18} xs={18} className='eachListingConfirmCol'>
-            <div className='eachListingTitle'>Each Listing Page</div>
+            <div className='eachListingTitle'>Each Listing Page {props.match.params.id}</div>
           </Col>
         </Row>
       </div>
