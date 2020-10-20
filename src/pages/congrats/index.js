@@ -38,7 +38,7 @@ const Confirm = (props) => {
             <div className='congratsPageTitle'>Congratulations!</div>
             <div className='congratsPageText'>You are now on the list.</div>
             <div className='congratsPageButtonContainer'>
-              <Link to="#">
+              <Link to="/getListings/region">
                 <Button title="Find a space" small color="#00A8E8" />
               </Link>
             </div>

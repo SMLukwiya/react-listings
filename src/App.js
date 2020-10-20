@@ -23,6 +23,7 @@ import HowPostingWorks from './pages/posting/howPostingWorks';
 import Congrats from './pages/congrats';
 import FindAListing from './pages/finding';
 import Finish from './pages/finish';
+import RegionsProtected from './pages/protected/regions';
 import ListingsProtected from './pages/protected/listings';
 import ListingProtected from './pages/protected/listing';
 
@@ -49,6 +50,7 @@ function App() {
           <Route  exact path="/finding" component={FindAListing} />
           <Route path="/finding/congrats" component={Congrats} />
           <Route path="/finish" component={Finish} />
+          <RegionsProtected exact path='/getListings/region' isUserAuthenticated />
           <ListingsProtected exact path='/getlistings/listings' isUserAuthenticated />
           <ListingProtected path='/getListings/listings/:id' isUserAuthenticated />
         </Switch>

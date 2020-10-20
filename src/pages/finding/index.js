@@ -36,13 +36,14 @@ const Finding = (props) => {
   }
 
   const onClickSubscribe = useCallback(() => {
-    const data = { email: state.value };
-
-    dispatch(subscribe(data, (error) => {
-      if(error) {console.log('error', error); return setState({...state, message: error, value: ''});}
-
-      setTimeout(() => props.history.push('/finding/congrats'), 1000);
-    }))
+    setTimeout(() => props.history.push('/finding/congrats'), 1000);
+    // const data = { email: state.value };
+    //
+    // dispatch(subscribe(data, (error) => {
+    //   if(error) {console.log('error', error); return setState({...state, message: error, value: ''});}
+    //
+    //   setTimeout(() => props.history.push('/finding/congrats'), 1000);
+    // }))
   }, [dispatch, state, props.history]);
 
   return (
@@ -74,7 +75,7 @@ const Finding = (props) => {
             </div>
             <div className='findingPageButtonContainer'>
               <span>
-                {user.loading ? <Loader /> :<Button small title="subscribe" color="#00A8E8" enabled={state.valid} click={onClickSubscribe} />}
+                {user.loading ? <Loader /> :<Button small title="subscribe" color="#00A8E8" enabled={/*state.valid*/true} click={onClickSubscribe} />}
               </span>
             </div>
           </Col>

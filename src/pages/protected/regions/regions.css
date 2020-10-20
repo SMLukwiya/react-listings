@@ -1,0 +1,111 @@
+/* CSSTransition */
+.regionsPage--enter {
+  opacity: 0;
+}
+
+.regionsPage--enter-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+/* Page CSS */
+.regionContainerStyle {
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: #00A8E8;
+  margin: 20px 15px;
+  padding-top: 15px;
+}
+
+.regionContainerStyle:hover {
+  cursor: pointer;
+}
+
+.regionTitle {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  text-align: center;
+  margin: 0;
+}
+
+.regionTotal {
+  font-family: ITCAvantGardeNormal;
+  font-size: 10px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.regionsPageContainer {
+  background-color: #F5F5F5;
+  height: 100vh;
+}
+
+.regionsPageRow {
+  padding-top: 130px;
+  background-color: #F5F5F5;
+}
+
+.regionsPageBackButton {
+  margin-top: 40px;
+}
+
+.regionsPageCol {
+  padding-left: 6%;
+}
+
+.regionsHeader {
+  width: 100%;
+  display: flex;
+  margin-top: 47px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #00A8E8;
+}
+
+.regionsPageTitle {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 15px;
+  color: #403D39;
+}
+
+.regionsPageNumber {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 15px;
+  color: #403D39;
+}
+
+.regionsPageButtonContainer {
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 30%
+}
+
+.regionsPageButton {
+  height: 100%;
+  border: 0;
+  border-radius: 30px;
+  width: 250px;
+  padding: 8px 30px;
+  background-color: #00A8E8;
+  outline: none;
+}
+
+.regionsPageButton:hover {
+  cursor: pointer;
+}
+
+.regionsPageButton:active {
+  outline: none;
+}
+
+.regionsPageButtonText {
+  font-size: 18px;
+  color: #FFFFFF;
+  font-family: ITCAvantGardeStdMedium;
+  margin-right: 3px;
+}

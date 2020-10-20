@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import LOGO from '../../assets/LOGO.svg';
 import classes from './header.module.css';
 
-const Header = ({color}) => {
+const Header = ({color, fontSize, center}) => {
+  const date = new Date();
   const style = {
-    marginRight: '5%',
-    marginTop: '40px',
-    marginBottom: '-40px',
-    fontSize: '40px',
+    marginRight: center ? 0 : '5%',
+    marginTop: center ? 0 : '40px',
+    marginBottom: center ? null : '-40px',
+    fontSize: fontSize ? fontSize : '40px',
     fontFamily: 'ITCAvantGardeStdBold',
     color: color ? color : null
   }
@@ -20,7 +21,14 @@ const Header = ({color}) => {
       <Link to="/" className={classes.Image}>
         <Image src={LOGO} preview={false} />
       </Link>
-      <h1 style={style}>The Property Listings</h1>
+      {!center ? <h1 style={style}>The Property Listings</h1> :
+      <div style={{display: 'flex', alignItems: 'center', marginRight: '30px'}}>
+        <h1 style={style}>The Property Listings</h1>
+        <div style={{width: '2px', height: '25px', backgroundColor: '#000', margin: '0 12px'}}/>
+        <p style={{fontSize: '10px', fontFamily: 'ITCAvantGardeNormal'}}>Week of {date.toLocaleString('default', {month: 'short'})} {date.getDate()}, {date.getFullYear()}</p>
+      </div>
+      }
+
     </div>
   );
 }
