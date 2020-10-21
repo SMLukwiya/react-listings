@@ -10,7 +10,7 @@
 
 .categoryModal--appear {
   opacity: 0;
-  transform: scaleY(0)
+  transform: scaleY(0);
 }
 
 .categoryModal--appear-active {
@@ -32,7 +32,7 @@
   transform-origin: top;
 }
 
-/* Page CSS */
+/* PAGE CSS */
 .allListingsContainer {
   background-color: #F5F5F5;
   height: 100vh;
@@ -57,6 +57,7 @@
   margin-bottom: 30%;
 }
 
+/* REGIONS DROPDOWN */
 .regionContainer {
   width: 100%;
   display: flex;
@@ -77,7 +78,6 @@ select {
   font-size: inherit;
   cursor: inherit;
   line-height: inherit;
-  margin: 0;
   color: #000;
   /* background-color: #f5f5f5; */
 }
@@ -117,6 +117,7 @@ select:focus {
   pointer-events: none;
 }
 
+/* CATEGORY DROPDOWN */
 .listingsCategory {
   width: 100%;
   display: flex;
@@ -152,6 +153,7 @@ select:focus {
   cursor: pointer;
 }
 
+/* CATEGORY MODAL */
 .categoryContainer {
   display: flex;
   position: absolute;
@@ -205,6 +207,7 @@ select:focus {
   height: 160px;
   margin-top: 15px;
   margin-right: 10%;
+  /* z-index: 9; */
 }
 
 .houseImageContainer {
@@ -213,7 +216,7 @@ select:focus {
 }
 
 .houseTextContainer {
-  height: 60%;
+  /* height: 100%; */
   margin-left: 20px;
 }
 
@@ -238,7 +241,7 @@ select:focus {
 }
 
 .houseDescription {
-  font-size: 11px;
+  font-size: 12px;
   font-family: ITCAvantGardeNormal;
 }
 

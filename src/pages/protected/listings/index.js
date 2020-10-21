@@ -35,7 +35,7 @@ const Listings = (props) => {
 
       // console.log('Listings', listings)
     }))
-  }, [dispatch]);
+  }, [dispatch, fetchlistings]);
 
   console.log('Listings', listings)
 
@@ -97,7 +97,7 @@ const Listings = (props) => {
           <div className='divider' style={{backgroundColor: '#403D39'}} />
           <p className='houseSubtitleText'>{size}</p>
         </div>
-        <Paragraph ellipsis={{rows: 3, expandable: true, onExpand: () => console.log('See more'), symbol: 'see more'}} className='houseDescription'>{description}</Paragraph >
+        <Paragraph ellipsis={{rows: 3, expandable: true, onExpand: () => props.history.push('/'), symbol: 'see more'}} className='houseDescription'>{description}</Paragraph >
         <p className='houseContactText'>Contact Ssebitosil J at <span style={{color: '#00A8E8'}}>{contact}</span></p>
       </div>
     </div>
@@ -116,7 +116,7 @@ const Listings = (props) => {
           <div className='regionContainer'>
             <div className='regionSelector'>
               <select defaultValue='najjera' >
-                {[1,2,3,4,5].map(()=><option value='najjera'>NAJJERA</option>)}
+                {[1,2,3,4,5].map((_, i) => <option key={i} value='najjera'>NAJJERA</option>)}
               </select>
             </div>
           </div>
@@ -129,12 +129,13 @@ const Listings = (props) => {
             </div>
             <p className='listingsCategoryTitle' style={showCategory ? {marginBottom: '-8px', transition: '.5s'} : null}>278 spaces in Najjera</p>
           </div>
-          {houses.map(({image, title, rate, date, location, size, description, contact}, index) =>
-          <>
-            <House image={image} rate={rate} title={title} date={date} location={location} size={size} description={description} contact={contact} />
-            <div style={{height: '2px', width: '100%', backgroundColor: '#E2E2E1', margin: '10px 8% 0 7%'}} />
-          </>
-          )}
+
+            {houses.map(({id, image, title, rate, date, location, size, description, contact}, index) =>
+            <div key={id} >
+              <House image={image} rate={rate} title={title} date={date} location={location} size={size} description={description} contact={contact} />
+              <div style={{height: '2px', width: '85%', backgroundColor: '#E2E2E1', margin: '10px 0 0 7%'}} />
+            </div>
+            )}
 
           <div className='bottomContainer'>
             <p className='bottonContentText' style={{color: '#00A8E8'}}>Subscribe</p>

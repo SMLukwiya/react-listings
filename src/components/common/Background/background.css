@@ -1,6 +1,6 @@
 .backgroundImageContainer {
-  top: calc(100% - 400px);
-  height: 400px;
+  top: calc(100% - 480px);
+  height: 480px;
   width: 100%;
   overflow: hidden;
   position: fixed;
@@ -12,4 +12,6 @@
   background-clip: content-box;
   background-origin:content-box;
   opacity: 1;
+  z-index: 1;
+  pointer-events: none;
 }
