@@ -28,13 +28,94 @@
   font-size: 26px;
   margin-left: 11%;
   margin-top: 40px;
-  margin-bottom: 40%;
+  margin-bottom: 10px;
+}
+
+.paymentPageEntryRow {
+  display: flex;
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+.choosePaymentTitle {
+  font-family: ITCAvantGardeNormal;
+  color: #C1839F;
+  font-size: 13px;
+  width: 25%;
+  margin-bottom: 50px;
+}
+
+.paymentOptionContainer {
+  width: 70%;
+}
+
+.paymentOptionsText {
+  text-align: center;
+  font-family: ITCAvantGardeNormal;
+  font-size: 11px;
+  color: #403D39;
 }
 
 .paymentPageButtonContainer {
   height: 40px;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 12%;
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  margin-right: 10%;
   margin-top: 100px;
+  position: absolute;
+  bottom: 0px;
+  right: 15px;
+}
+
+/* CARD PAYMENT */
+.cardPaymentRow {
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+.paymentOptionContainerRight {
+  width: 50%;
+}
+
+/* MOMO PAYMENT */
+.momoPaymentRow {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.momoPaymentDetailContainer {
+  width: 40%;
+  margin-left: 45px;
+}
+
+.momoPaymentTitle {
+  text-align: center;
+  font-size: 15px;
+  font-family: ITCAvantGardeStdBold;
+  color: #C1839F;
+}
+
+.momoTextStyle {
+  font-family: ITCAvantGardeNormal;
+  font-size: 13px;
+  color: #C1839F;
+}
+
+.merchantContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 20px;
+}
+
+.inputBoxes {
+  height: 30px;
+  width: 30px;
+  border-radius: 0;
+  border: 1px solid #CCC;
+  font-size: 15px;
+  font-family: ITCAvantGardeStdMedium;
 }

@@ -8,7 +8,43 @@
   transition: opacity .8s;
 }
 
-/* Page CSS */
+.categoryTitleAnimation--appear {
+  opacity: 0;
+}
+
+.categoryTitleAnimation--appear-active {
+  opacity: 1;
+  transition: .8s;
+}
+
+.categoryTitleAnimation--exit {
+  opacity: 1;
+}
+
+.categoryTitleAnimation--exit-appear {
+  opacity: 0;
+  transition: opacity .8s;
+}
+
+.categoryAnimation--appear {
+  opacity: 0;
+}
+
+.categoryAnimation--appear-active {
+  opacity: 1;
+  transition: opacity .8s;
+}
+
+.categoryAnimation--exit {
+  opacity: 1;
+}
+
+.categoryAnimation--exit-active {
+  opacity: 0;
+  transition: opacity .8s;
+}
+
+/* PAGE CSS */
 .howItWorksContainer {
   background-color: #F5F5F5;
   height: 100vh;
@@ -36,9 +72,26 @@
 
 .howItWorksCategoryContainer {
   display: flex;
-  margin-bottom: 40px;
+  margin-bottom: 5px;
   flex-wrap: wrap;
-  margin-top: 8%;
+  margin-top: 15%;
+  margin-left: 11%;
+}
+
+.howItWorksDupCategoryContainer {
+  display: flex;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+  margin-top: 15%;
+  margin-left: 11%;
+  position: absolute;
+  width: 90%;
+  margin-bottom: 5px;
+}
+
+.howItWorksItemCategoryContainer {
+  margin-top: 10px;
+  margin-left: 11%;
 }
 
 .howItWorksCategoryTitle {
@@ -46,6 +99,19 @@
   font-size: 15px;
   background-color: #C1839F;
   margin-right: 8px;
+  width: 130px;
+  height: 38px;
+  padding-top: 7px;
+  text-align: center;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.howItWorksDupCategoryTitle {
+  font-family: ITCAvantGardeNormal;
+  font-size: 15px;
+  background-color: #C1839F;
+  /* margin-right: 10%; */
   width: 130px;
   height: 38px;
   padding-top: 7px;
@@ -62,26 +128,41 @@
   margin: 0 7px;
   padding: 5px 20px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
-.howItWorksButtonContainer {
-  height: 40px;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 9%;
-  margin-top: 50px;
+/* TITLE TRANSITION */
+.rentStyle {
+  transform: translateY(-150px);
+  transition: .6s
 }
 
-.howItWorksButton {
-  height: 100%;
-  border: 0;
-  border-radius: 30px;
-  width: 180px;
-  padding: 8px 5px;
-  background-color: #C1839F;
-  display: flex;
-  justify-content: center;
-  outline: 0;
+.rentStyleHide {
+  transform: translateY(0);
+  opacity: 0;
+  transition: .6s
+}
+
+.saleStyle {
+  transform: translateY(-150px) translateX(-250px);
+  transition: .6s;
+}
+
+.saleStyleHide {
+  transform: translateY(0) translateX(0);
+  opacity: 0;
+  transition: .6s;
+}
+
+.leaseStyle {
+  transform: translateY(-150px) translateX(-500px);
+  transition: .6s;
+}
+
+.leaseStyleHide {
+  transform: translateY(0) translateX(0);
+  opacity: 0;
+  transition: .6s;
 }
 
 /* media */

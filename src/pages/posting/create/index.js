@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback } from 'react';
-import { Row, Col, Image } from 'antd';
+import { Row, Col, Image, Select } from 'antd';
 import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
 import ImageUploading from 'react-images-uploading';
@@ -13,14 +13,29 @@ import Menu from '../../../components/Menu';
 import BackButton from '../../../components/common/BackButton';
 import Background from '../../../components/common/Background';
 import AnimatedButton from '../../../components/common/Button/Animated';
+const { Option } = Select;
 const defaultImage = require('../../../assets/default.png');
+const dropdownArrow = require('../../../assets/icons/arrow.svg');
 
 const Create = (props) => {
   const [showPage, setShowPage] = useState(false);
   const listings = useSelector(state => state.listings);
   const { listing } = listings;
 
-  const [state, setState] = useState({title: listing.title ? listing.title : '', description: listing.description ? listing.description : '', images: listing.images.length ? listing.images : [], message: ''});
+  const [state, setState] = useState(
+    {
+      category: listing.category ? listing.category : '',
+      amount: listing.amount ? listing.amount : '',
+      location: listing.location ? listing.location : '',
+      availability: listing.availability ? listing.availability : '',
+      aboutyou: listing.aboutyou ? listing.aboutyou : '',
+      aboutspace: listing.aboutspace ? listing.aboutspace : '',
+      rentalrequirements: listing.rentalrequirements ? listing.rentalrequirements : '',
+      description: listing.description ? listing.description : '',
+      images: listing.images.length ? listing.images : [],
+      message: ''
+    }
+  );
 
   useEffect(() => {setShowPage(true)}, []);
   const dispatch = useDispatch();
@@ -36,6 +51,10 @@ const Create = (props) => {
     setState({...state, images: imageList});
   };
 
+  const onChangeSelect = (value) => {
+    console.log('select', value)
+  }
+
   const isFormValid = state.title && state.description && state.images.length ? true : false;
 
   const onChooseListing = useCallback(() => {
@@ -46,6 +65,12 @@ const Create = (props) => {
       props.history.push('/posting/howitworks/create/confirm')
     }, 1000);
   },[dispatch, state, props.history])
+
+  const customArrow = () => (
+    <div style={{ marginTop: '-10px', marginLeft: '-10px',height: '20px', width: '20px', backgroundColor: ''}}>
+      <Image preview={false} src={dropdownArrow} height="100%" width="100%" style={{transform: `rotate(-90deg)`}}/>
+    </div>
+  )
 
   return (
     <CSSTransition
@@ -60,20 +85,65 @@ const Create = (props) => {
           <Col span={4}>
             <Menu history={props.history} />
           </Col>
-          <Col span={2} className='createPageBackButton'>
+          <Col span={1} className='createPageBackButton'>
             <BackButton history={props.history} />
           </Col>
-          <Col span={18} className='createPageCol'>
+          <Col span={19} className='createPageCol'>
             <div className='createPageTitle'>describe your space</div>
             <Row>
               <Col span={12}>
                 <Row className='createPageEntryRow'>
-                  <Col className='createPageEntryTitle'>name/title</Col>
-                  <Col className='createPageInputContainer'><input onChange={(e) => handleChange(e, 'title')} className='createPageInput' value={state.title}/></Col>
+                  <Col className='createPageEntryTitle'>category</Col>
+                  <Col className='createPageInputContainer'>
+                    <Select
+                      defaultValue={state.category} style={{width: '100%'}}
+                      onChange={onChangeSelect}
+                      dropdownClassName='createPageInputContainer'
+                      suffixIcon={customArrow}>
+                      {[1,2,3,4,5].map((item, i) =>  (
+                        <Option key={i} value={item}>{item}</Option>
+                      ))}
+                    </Select>
+                  </Col>
+                </Row>
+                <Row className='createPageEntryRow'>
+                  <Col className='createPageEntryTitle'>Amount</Col>
+                  <Col className='createPageInputContainer'><input onChange={(e) => handleChange(e, 'amount')} className='createPageInput' value={state.amount}/></Col>
+                </Row>
+                <Row className='createPageEntryRow'>
+                  <Col className='createPageEntryTitle'>location</Col>
+                  <Col className='createPageInputContainer'><input onChange={(e) => handleChange(e, 'location')} className='createPageInput' value={state.location}/></Col>
+                </Row>
+                <Row className='createPageEntryRow'>
+                  <Col className='createPageEntryTitle'>Availability</Col>
+                  <Col className='createPageInputContainer'><input onChange={(e) => handleChange(e, 'availability')} className='createPageInput' value={state.availability}/></Col>
                 </Row>
                 <Row>
-                  <div className='createPageEntryTitle'>description</div>
-                  <div className='createPageInputContainer'><textarea row={10} onChange={(e) => handleChange(e, 'description')} className='createPageTextBox' value={state.description}/></div>
+                  <div className='createPageEntryTitle'>About This You</div>
+                  <div className='createPageInputContainer'><textarea row={10} onChange={(e) => handleChange(e, 'aboutyou')} className='createPageTextBox' value={state.aboutyou}/></div>
+                </Row>
+                <Row>
+                  <div className='createPageEntryTitle'>About This Space</div>
+                  <div className='createPageInputContainer'><textarea row={10} onChange={(e) => handleChange(e, 'aboutspace')} className='createPageTextBox' value={state.aboutspace}/></div>
+                </Row>
+                <Row>
+                  <div className='createPageEntryTitle'>Rental Requirements</div>
+                  <div className='createPageInputContainer'><textarea row={10} onChange={(e) => handleChange(e, 'rentalrequirements')} className='createPageTextBox' value={state.rentalrequirements}/></div>
+                </Row>
+                <Row className='createPageEntryRow'>
+                  <Col className='createPageEntryTitle'>contact</Col>
+                  <Col className='createPageInputContainer'>
+                    <Select
+                      defaultValue=''
+                      style={{width: '100%'}}
+                      onChange={onChangeSelect}
+                      dropdownClassName='createPageInputContainer'
+                      suffixIcon={customArrow}>
+                      {[1,2,3,4,5].map((item, i) =>  (
+                        <Option key={i} value={item}>{item}</Option>
+                      ))}
+                    </Select>
+                  </Col>
                 </Row>
               </Col>
               <Col span={12}>
@@ -81,7 +151,7 @@ const Create = (props) => {
                   multiple
                   value={state.images}
                   onChange={onChange}
-                  maxNumber={6}
+                  maxNumber={8}
                   dataURLKey="data_url"
                 >
                   {({ imageList, onImageUpload, onImageRemoveAll, onImageUpdate, onImageRemove, isDragging,dragProps, }) => (
@@ -102,7 +172,7 @@ const Create = (props) => {
                       </Col>
                       <Col className='createPageImageContainer'>
                         {imageList.length ? (
-                          imageList.slice(0, 4).map((image, index) => (
+                          imageList.slice(0, 6).map((image, index) => (
                             <div key={index} className="image-item">
                               <img src={image['data_url']} className='createPageImageInput' />
                               <div className="image-item__btn-wrapper">
@@ -112,7 +182,7 @@ const Create = (props) => {
                             </div>
                           ))
                           ) : (
-                            [1,2,3,4].map((item) => (
+                            [1,2,3,4,5,6].map((item) => (
                               <div key={item} className="image-item">
                                 <img src={defaultImage} className='createPageImageInput' />
                               </div>
@@ -128,7 +198,7 @@ const Create = (props) => {
             </Row>
             <div className='createPageButtonContainer'>
               <span>
-                <AnimatedButton title='next' small color='#C1839F' click={onChooseListing} enabled={isFormValid} />
+                <AnimatedButton title='next' small color='#C1839F' click={onChooseListing} enabled={/*isFormValid*/ true} />
               </span>
             </div>
           </Col>

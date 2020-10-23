@@ -38,17 +38,22 @@
   margin-top: 100px;
 }
 
-.confirmPostTextContainer {
-  margin: 15% 0 25% 0;
+.confirmPostContentContainer {
   display: flex;
-  justify-content: space-between;
-  width: 80%
+}
+
+.confirmPostTextContainer {
+  margin-left: 10px;
+  margin-top: 12%;
+  width: 50%;
+  /* background-color: red; */
 }
 
 .confirmPostText {
   font-family: ITCAvantGardeNormal;
   font-size: 15px;
   color: #C1839F;
+  margin-bottom: 50px;
 }
 
 .confirmPostText a {
@@ -63,4 +68,44 @@
 .confirmPostText a:hover {
   color: #C1839F;
   text-decoration: none;
+}
+
+/* INOICE */
+.invoiceContainer {
+  width: 70%;
+  border-left: 1px solid #403D39;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.invoiceTitle {
+  font-size: 14px;
+  font-family: ITCAvantGardeStdBold;
+  color: #403D39;
+}
+
+.invoiceDivider {
+  height: 1px;
+  width: 100%;
+  background-color: #E2E2E1;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+.invoiceTextContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.invoiceText {
+  font-family: ITCAvantGardeNormal;
+  font-size: 12px;
+  color: #403D39;
+}
+
+.invoiceTotal {
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 13px;
+  color: #403D39;
 }

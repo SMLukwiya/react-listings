@@ -7,6 +7,8 @@ export const houses = [
     date: (new Date()).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }),
     location: 'Martin Road Najjera',
     size: '750 sq ft',
+    category: 'apartment for sale',
+    region: 'Nakawa',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec porttitor massa. Vestibulum ultricies, lacus quis aliquet dapibus, est orci placerat ex, non tempor nulla lectus eu magna. Integer luctus ante libero, vitae egestas lorem vehicula at. Sed sed purus id leo placerat accumsan eu et nunc.Lorem ipsum dolor sit amet, consectetur adipiscing elit.vitae egestas loremsem. Sed aliquam nunc at mauris hendrerit, congue consectetur augue hendrerit eget auctor lorem scelerisque eget. diam vel, rutrum consectetur sem. Aliquam nec porttitor massa kleen Mauris fringilla tjko convallis metus... see more',
     contact: 'oikiujyh-bnwtchlq@on.propertylistings.com'
   },
@@ -18,6 +20,8 @@ export const houses = [
     date: (new Date()).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }),
     location: 'Martin Road,Najjera',
     size: '750 sq ft',
+    category: 'apartment for rent',
+    region: 'Kawempe',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec porttitor massa. Vestibulum ultricies, lacus quis aliquet dapibus, est orci placerat ex, non tempor nulla lectus eu magna. Integer luctus ante libero, vitae egestas lorem vehicula at. Sed sed purus id leo placerat accumsan eu et nunc.Lorem ipsum dolor sit amet, consectetur adipiscing elit.vitae egestas loremsem. Sed aliquam nunc at mauris hendrerit, congue consectetur augue hendrerit eget auctor lorem scelerisque eget. diam vel, rutrum consectetur sem. Aliquam nec porttitor massa kleen Mauris fringilla tjko convallis metus... see more',
     contact: 'oikiujyh-bnwtchlq@on.propertylistings.com'
   },
@@ -29,6 +33,8 @@ export const houses = [
     date: (new Date()).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }),
     location: 'Martin Road,Najjera',
     size: '750 sq ft',
+    category: 'apartment for rent',
+    region: 'Kisaasi',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec porttitor massa. Vestibulum ultricies, lacus quis aliquet dapibus, est orci placerat ex, non tempor nulla lectus eu magna. Integer luctus ante libero, vitae egestas lorem vehicula at. Sed sed purus id leo placerat accumsan eu et nunc.Lorem ipsum dolor sit amet, consectetur adipiscing elit.vitae egestas loremsem. Sed aliquam nunc at mauris hendrerit, congue consectetur augue hendrerit eget auctor lorem scelerisque eget. diam vel, rutrum consectetur sem. Aliquam nec porttitor massa kleen Mauris fringilla tjko convallis metus... see more',
     contact: 'oikiujyh-bnwtchlq@on.propertylistings.com'
   },
@@ -40,6 +46,8 @@ export const houses = [
     date: (new Date()).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }),
     location: 'Martin Road,Najjera',
     size: '750 sq ft',
+    category: 'apartment for sale',
+    region: 'Bugolobi',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec porttitor massa. Vestibulum ultricies, lacus quis aliquet dapibus, est orci placerat ex, non tempor nulla lectus eu magna. Integer luctus ante libero, vitae egestas lorem vehicula at. Sed sed purus id leo placerat accumsan eu et nunc.Lorem ipsum dolor sit amet, consectetur adipiscing elit.vitae egestas loremsem. Sed aliquam nunc at mauris hendrerit, congue consectetur augue hendrerit eget auctor lorem scelerisque eget. diam vel, rutrum consectetur sem. Aliquam nec porttitor massa kleen Mauris fringilla tjko convallis metus... see more',
     contact: 'oikiujyh-bnwtchlq@on.propertylistings.com'
   },
@@ -51,6 +59,7 @@ export const houses = [
     date: (new Date()).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }),
     location: 'Martin Road,Najjera',
     size: '750 sq ft',
+    region: 'Nakawa',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec porttitor massa. Vestibulum ultricies, lacus quis aliquet dapibus, est orci placerat ex, non tempor nulla lectus eu magna. Integer luctus ante libero, vitae egestas lorem vehicula at. Sed sed purus id leo placerat accumsan eu et nunc.Lorem ipsum dolor sit amet, consectetur adipiscing elit.vitae egestas loremsem. Sed aliquam nunc at mauris hendrerit, congue consectetur augue hendrerit eget auctor lorem scelerisque eget. diam vel, rutrum consectetur sem. Aliquam nec porttitor massa kleen Mauris fringilla tjko convallis metus... see more',
     contact: 'oikiujyh-bnwtchlq@on.propertylistings.com'
   },
@@ -62,6 +71,8 @@ export const houses = [
     date: (new Date()).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }),
     location: 'Martin Road,Najjera',
     size: '750 sq ft',
+    category: 'apartment for rent',
+    region: 'Nakawa',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec porttitor massa. Vestibulum ultricies, lacus quis aliquet dapibus, est orci placerat ex, non tempor nulla lectus eu magna. Integer luctus ante libero, vitae egestas lorem vehicula at. Sed sed purus id leo placerat accumsan eu et nunc.Lorem ipsum dolor sit amet, consectetur adipiscing elit.vitae egestas loremsem. Sed aliquam nunc at mauris hendrerit, congue consectetur augue hendrerit eget auctor lorem scelerisque eget. diam vel, rutrum consectetur sem. Aliquam nec porttitor massa kleen Mauris fringilla tjko convallis metus... see more',
     contact: 'oikiujyh-bnwtchlq@on.propertylistings.com'
   }
@@ -161,3 +172,13 @@ export const categories = [
     ]
   },
 ];
+
+export const regions = [
+  {name: 'Najjera', total: 244}, {name: 'Kololo', total: 130}, {name: 'Nakawa', total: 140}, {name: 'Kisaasi', total: 230}, {name: 'Kamwokya', total: 34}, {name: 'Wandegeya', total: 26}, {name: 'Fortbelt', total: 59}, {name: 'Ntinda', total: 100},{name: 'Busega', total: 110}, {name: 'Bugolobi', total: 200},
+  {name: 'Najjera', total: 244}, {name: 'Kololo', total: 130}, {name: 'Nakawa', total: 140}, {name: 'Kisaasi', total: 230}, {name: 'Kamwokya', total: 34}, {name: 'Wandegeya', total: 26}, {name: 'Fortbelt', total: 59}, {name: 'Ntinda', total: 100},{name: 'Busega', total: 110}, {name: 'Bugolobi', total: 200},
+  {name: 'Najjera', total: 244}, {name: 'Kololo', total: 130}, {name: 'Nakawa', total: 140}, {name: 'Kisaasi', total: 230}, {name: 'Kamwokya', total: 34}, {name: 'Wandegeya', total: 26}, {name: 'Fortbelt', total: 59}, {name: 'Ntinda', total: 100},{name: 'Busega', total: 110}, {name: 'Bugolobi', total: 200}
+]
+
+export const sorting = [
+  'MOST EXPENSIVE', 'LEAST EXPENSIVE', 'LARGEST', 'SMALLEST', 'AVAILABLE SOONEST', 'AVAILABLE LATEST', 'DEFAULT DATE'
+]

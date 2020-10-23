@@ -34,7 +34,14 @@ const Confirm = (props) => {
             <BackButton history={props.history} />
           </Col>
           <Col span={18} className='finishPageConfirmCol'>
-            <div className='finishPageTitle'>finish</div>
+            <div className='finishPageTitle'>Your Payment is Complete</div>
+            <div className='finishPageVerificationContainer'>
+              <p className='finishPageText'>Verification Code</p>
+              <p className='finishPageVerificationCode'>dgrtfbcv4dfs5gd9701fb8re46db861664g</p>
+            </div>
+            <div className='finishPageViewReceiptContainer'>
+              <button className='finishPageViewReceiptText'>View Receipt</button>
+            </div>
             <div className='finishPageTextContainer'>
               <Checkbox className='finishPageText'>& I accept the Terms of Use and Privacy Policy</Checkbox>
             </div>

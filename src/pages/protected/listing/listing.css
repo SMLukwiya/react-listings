@@ -19,26 +19,101 @@
   background-color: #F5F5F5;
 }
 
-.eachListingBackButton {
-  margin-top: 40px;
-}
-
-.eachListingTitle {
-  font-family: ITCAvantGardeNormal;
-  font-size: 26px;
-  margin-left: 11%;
-  margin-top: 40px;
-  margin-bottom: 30%;
-}
-
-.eachListingText {
-  font-family: ITCAvantGardeNormal;
-}
-
-.eachListingButtonContainer {
-  height: 40px;
+.listingImageContainer {
+  margin-top: 30px;
+  margin-bottom: 40px;
+  height: 300px;
   display: flex;
-  justify-content: flex-end;
-  margin-right: 12%;
-  margin-top: 100px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.eachListingConfirmCol {
+  margin-left: 11%;
+  margin-right: 11%;
+  width: 100%;
+}
+
+.listingsCategoryText {
+  font-size: 11px;
+  font-family: ITCAvantGardeNormal;
+}
+
+.listingTitleText {
+  font-family: ITCAvantGardeStdBold;
+  font-size: 16px;
+  color: #00A8E8;
+}
+
+.listingDetailContainerStyle {
+  display: flex;
+  justify-content: center;
+}
+
+.listingDetailLeftContent {
+  width: 15%;
+}
+
+.listingDetailRightContent {
+  margin-left: 60px;
+  width: 100%;
+}
+
+.listingDetailTitle {
+  font-size: 13px;
+  font-family: ITCAvantGardeStdMedium;
+  color: #403D39;
+}
+
+.listingDetailMiniContainer {
+  margin-top: 20px;
+}
+
+.listingDetailMiniText {
+  font-size: 12px;
+  font-family: ITCAvantGardeStdMedium;
+  color: #403D39;
+}
+
+.listingDetailMiniSubText {
+  font-size: 11px;
+  font-family: ITCAvantGardeNormal;
+  color: #403D39;
+  margin-top: -10px;
+}
+
+.listingDetailDescription {
+  font-family: ITCAvantGardeNormal;
+  font-size: 12px;
+  color: #403D39;
+}
+
+.listingFeaturedTitle {
+  font-size: 15px;
+  font-family: ITCAvantGardeStdMedium;
+  color: #403D39;
+}
+
+.listingFeaturedImageContainer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.featuredContainer {
+  width: 33%;
+  height: 200px;
+}
+
+.featuredCategoryTitle {
+  font-family: ITCAvantGardeStdBold;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.featuredCategoryText {
+  font-family: ITCAvantGardeNormal;
+  font-size: 14px;
+  color: #403D39;
+  margin-top: -10px
 }

@@ -61,60 +61,55 @@
 .regionContainer {
   width: 100%;
   display: flex;
-  justify-content: center;
-}
-
-select {
-  appearance: none;
-  -moz-appearance: none;
-	-webkit-appearance: none;
-  background-color: transparent;
-  border: none;
-  padding: 0 1em 0 0;
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: inherit;
-  line-height: inherit;
-  color: #000;
-  /* background-color: #f5f5f5; */
-}
-
-select::-ms-expand {
-  display: none;
-}
-
-select:focus {
-  outline: none;
-  border-color: #00A8E8;
+  justify-content: space-between;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-top: 5%;
 }
 
 .regionSelector {
-  width: 100%;
   border: 1px solid #000;
-  background-color: #f5f5f5;
+  border-radius: 15px;
   width: 200px;
   height: 26px;
-  padding-left: 4em;
-  padding-top: 3px;
-  font-size: 15px;
-  font-family: ITCAvantGardeStdMedium;
-  cursor: pointer;
-  box-sizing: border-box;
 }
 
-.regionSelector::after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  background-color: #00A8E8;
-  clip-path: polygon(100% 58%, 51% 100%, 0 58%, 0 35%, 51% 75%, 100% 33%);
-  position: absolute;
-  margin-left: -14px;
-  margin-top: 3px;
-  pointer-events: none;
+.regionsOptionContainer {
+  width: 100%;
+  background-color: #FFF;
+  border: 1px solid #00A8E8;
+  padding-left: 10px;
+}
+
+.regionsOptionTitle {
+  color: #00A8E8;
+  width: 100%;
+  font-size: 13px;
+  font-family: ITCAvantGardeStdMedium;
+  margin-top: 10px;
+}
+
+.regionOptionText {
+  color: #403D39;
+  font-size: 11px;
+  font-family: ITCAvantGardeNormal;
+  cursor: pointer;
+}
+
+.regionsSortingContainer {
+  background-color: #FFF;
+  border-width: 0 2px 2px 2px;
+  border-color: #00A8E8;
+  border-style: solid;
+  padding-left: 5px;
+  padding-top: 8px;
+  margin-top: 15px;
+}
+
+.regionSortingText {
+  color: #403D39;
+  font-family: ITCAvantGardeStdMedium;
+  cursor: pointer;
 }
 
 /* CATEGORY DROPDOWN */
@@ -137,7 +132,9 @@ select:focus {
 .listingsCategoryTitle {
   font-size: 15px;
   font-family: ITCAvantGardeStdMedium;
+  margin-top: 3px;
   margin-right: 15px;
+  color: #403D39;
 }
 
 .listingsDropdown {
@@ -156,14 +153,11 @@ select:focus {
 /* CATEGORY MODAL */
 .categoryContainer {
   display: flex;
-  position: absolute;
-  margin-top: 390px;
   background-color: #fff;
   border: 2px solid #00A8E8;
   padding: 0 10px;
   box-sizing: border-box;
-  width: 65%;
-  z-index: 10;
+  width: 100%;
 }
 
 .categoryTitle {
@@ -181,11 +175,14 @@ select:focus {
 .subCategoryTitle {
   font-size: 11px;
   font-family: ITCAvantGardeStdMedium;
+  color: #403D39;
 }
 
 .subCategoryText {
   font-family: ITCAvantGardeNormal;
-  font-size: 10px
+  font-size: 10px;
+  color: #403D39;
+  cursor: pointer;
 }
 
 .allListingsText {
@@ -207,7 +204,7 @@ select:focus {
   height: 160px;
   margin-top: 15px;
   margin-right: 10%;
-  /* z-index: 9; */
+  cursor: pointer;
 }
 
 .houseImageContainer {
@@ -271,4 +268,14 @@ select:focus {
 .bottonContentText {
   font-size: 13px;
   font-family: ITCAvantGardeStdMedium;
+}
+
+/* SEARCH ICON */
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  width: 25px;
+  margin-top: -5px;
 }
