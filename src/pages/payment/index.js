@@ -71,7 +71,7 @@ const Confirm = (props) => {
         <Header color='#C1839F' />
         <Row className='paymentPageRow'>
           <Col xs={4} sm={4} md={4} lg={4} xl={4}>
-            <Menu />
+            <Menu history={props.history} />
           </Col>
 
           <Col xs={1} sm={1} md={1} lg={1} xl={1} className='paymentPageBackButton'>

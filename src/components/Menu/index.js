@@ -25,7 +25,7 @@ const Menu = (props) => {
         <Link to="" onClick={(e) => click(e)(props.aboutRef)}>about us</Link>
       </div>
       <div className={classes.Link}><Link to="/faqs">FAQs</Link></div>
-      <div className={classes.Link}><Link to="/contact">contact</Link></div>
+      <div className={classes.Link}><Link to="#">contact</Link></div>
     </div>
   )
 }

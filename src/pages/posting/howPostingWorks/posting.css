@@ -133,7 +133,7 @@
 
 /* TITLE TRANSITION */
 .rentStyle {
-  transform: translateY(-150px);
+  transform: translateY(-100px);
   transition: .6s
 }
 
@@ -144,7 +144,7 @@
 }
 
 .saleStyle {
-  transform: translateY(-150px) translateX(-250px);
+  transform: translateY(-100px) translateX(-160px);
   transition: .6s;
 }
 
@@ -155,7 +155,7 @@
 }
 
 .leaseStyle {
-  transform: translateY(-150px) translateX(-500px);
+  transform: translateY(-100px) translateX(-330px);
   transition: .6s;
 }
 
@@ -165,9 +165,26 @@
   transition: .6s;
 }
 
-/* media */
+/* MEDIA QUERIES */
 @media only screen and (min-width: 1200px) {
   .howItWorksButtonContainer {
     margin-right: 5%;
   }
+
+  .rentStyle {
+    transform: translateY(-150px);
+  }
+
+  .saleStyle {
+    transform: translateY(-150px) translateX(-280px);
+  }
+
+  .leaseStyle {
+    transform: translateY(-150px) translateX(-560px);
+  }
+
 }
+
+@media only screen and (min-width: 768px) {}
+
+@media only screen and (min-width: 600px) {}

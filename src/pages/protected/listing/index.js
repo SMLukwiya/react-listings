@@ -139,7 +139,17 @@ const Listing = (props) => {
         <div className='cookieContainer'>
           <p className='cookieNotification'>We use cookies for key functions of our site. For more information, read our <a href='#'>Cookie Policy</a> <span className='cookieButton'>Ok, got it</span></p>
         </div>
-        {previewImage && <Slider images={preview} click={onViewPhotosClick} />}
+
+        <CSSTransition
+          in={previewImage}
+          timeout={600}
+          classNames="previewImage-"
+          unmountOnExit
+          appear
+        >
+          <Slider images={preview} click={onViewPhotosClick} />
+        </CSSTransition>
+        {/*previewImage && <Slider images={preview} click={onViewPhotosClick} />*/}
       </div>
     </CSSTransition>
   )

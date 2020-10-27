@@ -1,3 +1,23 @@
+/* CSSTRANSITION CLASSES */
+.previewImage--enter {
+  opacity: 0;
+}
+
+.previewImage--enter-active {
+  opacity: 1;
+  transition: opacity .6s;
+}
+
+.previewImage--exit-active {
+  opacity: 1;
+}
+
+.previewImage--exit {
+  opacity: 0;
+  transition: .6s;
+}
+
+/* PAGE CSS */
 .sliderContainer {
   position: fixed;
   top: 0;
@@ -56,8 +76,8 @@
   width: 13px;
   height: 17px;
   transition: .2s;
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: -2px;
+  margin-right: -1.5px;
 }
 
 .sliderPageArrow2 {
