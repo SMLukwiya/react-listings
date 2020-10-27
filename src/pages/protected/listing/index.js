@@ -10,14 +10,18 @@ import Menu from '../../../components/Menu';
 import BackButton from '../../../components/common/BackButton';
 import Button from '../../../components/common/Button';
 import Background from '../../../components/common/Background';
+import Slider from '../../../components/Slider';
 import { fetchsinglelisting } from '../../../store/actions';
 import {houses} from '../../../data';
 const house1 = require('../../../assets/sample_house/house1.jpg');
 const house2 = require('../../../assets/sample_house/house2.jpg');
 const house3 = require('../../../assets/sample_house/house3.jpg');
 
+const preview = [{url: house1}, {url: house2}, {url: house3}, {url: house1}, {url: house2}]
+
 const Listing = (props) => {
   const [showPage, setShowPage] = useState(false);
+  const [previewImage, setPreviewImage] = useState();
   const state = useSelector(state => state.listings);
   const { listings } = state;
 
@@ -35,6 +39,10 @@ const Listing = (props) => {
       }))
       }
     }, [dispatch, props.match.params.id]);
+
+    const onViewPhotosClick = () => {
+      setPreviewImage(!previewImage);
+    }
 
     const Featured = ({image, category, title, region}) => (
       <div className='featuredContainer'>
@@ -61,6 +69,9 @@ const Listing = (props) => {
                 <Image src={image} preview={false} height="100%" width='98%' />
               </Col>
             )}
+            <div style={{height: '40px', position: 'absolute', right: 25, top: '52%' }}>
+              <Button title='View Photos' color='#00A8E8' small fontSize={15} enabled click={onViewPhotosClick}/>
+            </div>
           </Row>
           <Col className='eachListingConfirmCol'>
             <p className='listingsCategoryText'>APARTMENT FOR RENT</p>
@@ -119,7 +130,16 @@ const Listing = (props) => {
               </div>
             </div>
           </Col>
+          <div className='bottomContainer' style={{marginTop: '150px', marginRight: '15%'}}>
+            <p className='bottonContentText' style={{color: '#00A8E8'}}>Subscribe</p>
+            <div className='divider' style={{backgroundColor: '#403D39', marginTop: '-10px'}}/>
+            <p className='bottonContentText' style={{color: '#C1839F'}}>Post a Space</p>
+          </div>
         </Row>
+        <div className='cookieContainer'>
+          <p className='cookieNotification'>We use cookies for key functions of our site. For more information, read our <a href='#'>Cookie Policy</a> <span className='cookieButton'>Ok, got it</span></p>
+        </div>
+        {previewImage && <Slider images={preview} click={onViewPhotosClick} />}
       </div>
     </CSSTransition>
   )
