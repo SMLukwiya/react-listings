@@ -51,62 +51,7 @@
   width: 40px;
 }
 
-.sliderPageClose {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding-right: 20px;
-  justify-content: flex-end;
-  margin-right: 5%;
-}
-
-.sliderPageClose:hover {
-  cursor: pointer;
-}
-
-.sliderPageArrow1 {
-  transform: rotate(180deg);
-  width: 17px;
-  height: 17px;
-  margin-top: 7px;
-  transition: .2s;
-}
-
-.cancelIcon {
-  width: 13px;
-  height: 17px;
-  transition: .2s;
-  margin-left: -2px;
-  margin-right: -1.5px;
-}
-
-.sliderPageArrow2 {
-  width: 17px;
-  height: 17px;
-  transition: .2s;
-}
-
-.sliderPageClose:hover > .sliderPageArrow1 {
-  transform: rotate(180deg) scale(1.2);
-  transform-origin: left;
-  margin-top: 10px;
-  margin-right: -10px;
-}
-
-.sliderPageClose:hover > .cancelIcon {
-  transform: scale(0.7);
-  transform-origin: center;
-
-}
-
-.sliderPageClose:hover > .sliderPageArrow2 {
-  transform: scale(1.6);
-  transform-origin: left;
-  padding-left: 4px;
-  margin-top: -3px;
-}
-
 .fadeIn {
   opacity: 1;
-  transition: opacity 400s;
+  transition: opacity .4s;
 }

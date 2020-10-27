@@ -2,6 +2,8 @@ import React, {useEffect, useRef, useState, useCallback} from 'react';
 import { Image } from 'antd';
 
 import './slider.css';
+import CancelIcon from '../common/Cancelicon';
+
 const arrow = require('../../assets/icons/arrow-white.svg');
 const cancel = require('../../assets/icons/cancel-white.png');
 
@@ -49,10 +51,8 @@ const Slider = ({images, click}) => {
 
   return (
     <div className='sliderContainer'>
-      <div className='sliderPageClose' onClick={click}>
-        <Image preview={false} src={arrow} className='sliderPageArrow1' />
-        <Image preview={false} src={cancel} className='cancelIcon' />
-        <Image preview={false} src={arrow} className='sliderPageArrow2' />
+      <div style={{height: '40px', display: 'flex', justifyContent: 'flex-end'}}>
+      <CancelIcon click={click} white />
       </div>
       <div className='sliderImageContainer'>
         <div className='sliderLeftArrow' onClick={goToPreviousSlide}><Image preview={false} src={arrow} height='100%'/></div>

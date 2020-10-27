@@ -10,13 +10,12 @@ import BackButton from '../../components/common/BackButton';
 import Tile from '../../components/common/Tile';
 import Button from '../../components/common/Button';
 import Background from '../../components/common/Background';
+import CancelIcon from '../../components/common/Cancelicon'
 
 const chat = require('../../assets/icons/chatbubble.svg');
 const clock = require('../../assets/icons/clockicon.svg');
 const emailFrom = require('../../assets/icons/emailfromus.svg');
 const form = require('../../assets/icons/form.svg');
-const arrow = require('../../assets/icons/arrow.svg');
-const cancel = require('../../assets/icons/cancel.png');
 
 const faqs = [
   {
@@ -62,12 +61,8 @@ const Confirm = (props) => {
 
   const PostModal = () => (
       <div className="modalContainer">
-        <div className='postingPageCloseContainer' onClick={switchModal}>
-          <div className='postingPageClose'>
-            <Image preview={false} src={arrow} className='postingPageArrow1' />
-            <Image preview={false} src={cancel} className='postingCancelIcon' />
-            <Image preview={false} src={arrow} className='postingPageArrow2' />
-          </div>
+        <div className='postingPageCloseContainer'>
+          <CancelIcon click={switchModal}/>
         </div>
         <div>
           <div className='ModalTitle'>sign in to continue</div>
