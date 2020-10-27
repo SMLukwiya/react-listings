@@ -123,12 +123,12 @@
   transform: rotate(180deg);
   width: 17px;
   height: 17px;
-  margin-top: 15px;
+  margin-top: 8px;
   transition: .2s;
 }
 
-.cancelIcon {
-  width: 13px;
+.postingCancelIcon {
+  width: 15px;
   height: 17px;
   transition: .2s;
   margin-left: -2px;
@@ -138,17 +138,18 @@
 .postingPageArrow2 {
   width: 17px;
   height: 17px;
+  margin-top: 0px;
   transition: .2s;
 }
 
 .postingPageClose:hover > .postingPageArrow1 {
   transform: rotate(180deg) scale(1.2);
   transform-origin: left;
-  margin-top: 15px;
+  margin-top: 9px;
   margin-right: -10px;
 }
 
-.postingPageClose:hover > .cancelIcon {
+.postingPageClose:hover > .postingCancelIcon {
   transform: scale(0.7);
   transform-origin: center;
 
@@ -158,5 +159,5 @@
   transform: scale(1.6);
   transform-origin: left;
   padding-left: 4px;
-  margin-top: -6px;
+  margin-top: -2px;
 }

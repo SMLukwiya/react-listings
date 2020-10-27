@@ -97,7 +97,7 @@ const Confirm = (props) => {
                 <p className='invoiceTitle'>Feature Listing</p>
                 <div className='invoiceDivider' />
                 {[{name: 'Email Inbox', rate: 20}, {name: 'Web Page', rate: 10}, {name: 'Landing', rate: 30}].map(({name, rate}) => (
-                  <div className='invoiceTextContainer'>
+                  <div className='invoiceTextContainer' key={name}>
                     <Checkbox onChange={(e) => onCheckOption(e, `${name.split(' ')[0].toLowerCase()}Featured`, rate)} style={{fontFamily: 'ITCAvantGardeNormal', color: '#403D39', fontSize: '12px'}}>{name}</Checkbox>
                     <p className='invoiceText'>+{rate}%</p>
                   </div>

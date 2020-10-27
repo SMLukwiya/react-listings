@@ -65,7 +65,7 @@ const Confirm = (props) => {
         <div className='postingPageCloseContainer' onClick={switchModal}>
           <div className='postingPageClose'>
             <Image preview={false} src={arrow} className='postingPageArrow1' />
-            <Image preview={false} src={cancel} className='cancelIcon' />
+            <Image preview={false} src={cancel} className='postingCancelIcon' />
             <Image preview={false} src={arrow} className='postingPageArrow2' />
           </div>
         </div>
