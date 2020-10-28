@@ -13,7 +13,7 @@
   transform: rotate(180deg);
   width: 17px;
   height: 17px;
-  margin-top: 14px; /* from margin 8*/
+  margin-top: 15px; /* from margin 8*/
   transition: .2s;
 }
 
@@ -35,7 +35,7 @@
 .cancelIconClose:hover > .cancelIconArrow1 {
   transform: rotate(180deg) scale(1.2);
   transform-origin: left;
-  margin-top: 14px; /* from 9 */
+  margin-top: 16px; /* from 9 */
   margin-right: -10px;
 }
 
