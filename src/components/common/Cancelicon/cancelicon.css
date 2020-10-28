@@ -13,7 +13,7 @@
   transform: rotate(180deg);
   width: 17px;
   height: 17px;
-  margin-top: 8px;
+  margin-top: 12px; /* from margin 8*/
   transition: .2s;
 }
 
