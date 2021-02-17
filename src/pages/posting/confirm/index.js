@@ -2,8 +2,9 @@ import React, {useState, useEffect, useCallback} from 'react';
 import { Row, Col, Select, Image, Checkbox } from 'antd';
 import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
-import { useDispatch } from 'react-redux';
-import { postlisting } from '../../../store/actions';
+import { useCookies } from 'react-cookie';
+import { useSelector, useDispatch } from 'react-redux';
+import { makePayment, setPaymentDetails } from '../../../store/actions';
 
 import './confirm.css';
 import Header from '../../../components/Header';
@@ -16,7 +17,9 @@ const { Option } = Select;
 
 const Confirm = (props) => {
   const [showPage, setShowPage] = useState(false);
-  const [state, setState] = useState({ numberOfWeeks: 1, total: 50000, emailFeatured: false, webFeatured: false, landingFeatured: false, addition: { emailFeatured: 0, webFeatured: 0, landingFeatured: 0 }, checkedBefore: false })
+  const [ cookies, setCookie] = useCookies();
+  const [state, setState] = useState({ numberOfWeeks: 1, total: 50000, emailFeatured: false, webFeatured: false, landingFeatured: false, addition: { emailFeatured: 0, webFeatured: 0, landingFeatured: 0 }, checkedBefore: false, message: '' })
+  const { payment_property_id, loading } = useSelector(state => state.listings);
 
   useEffect(() => {setShowPage(true)}, []);
   const dispatch = useDispatch();
@@ -30,18 +33,26 @@ const Confirm = (props) => {
   }
 
   const proceed = () => props.history.push('/post/howitworks/create/confirm/payment');
+  let total = state.total + state.addition.emailFeatured + state.addition.webFeatured + state.addition.landingFeatured;
 
   const onConfirmListing = useCallback(() => {
-    dispatch(postlisting((error) => {
-      if(error) return console.log('Error', error);
+      setPaymentDetails(null, total);
 
-      sessionStorage.setItem('listingsTotal', state.total + state.addition.emailFeatured + state.addition.webFeatured + state.addition.landingFeatured);
+      setCookie(`p-listings_listings_total_${payment_property_id}`, total, {path: '/'});
 
       setTimeout(() => {
         props.history.push('/post/howitworks/create/confirm/payment')
       }, 1000)
-    }))
-  }, [dispatch]);
+    }, [dispatch]);
+
+    // Initiate Payment
+    const initiatePayment = useCallback(() => {
+      dispatch(makePayment(15, total, (err, res) => {
+        if (err) return console.log('Payment Error', err);
+
+        console.log('Res',res);
+      }))
+    })
 
   const customArrow = () => (
     <div style={{ marginTop: '-10px', marginLeft: '-10px',height: '20px', width: '20px', backgroundColor: ''}}>
@@ -57,7 +68,7 @@ const Confirm = (props) => {
       unmountOnExit>
       <div className='confirmPostContainer'>
         <Background />
-        <Header color='#C1839F' />
+        <Header color='#C1839F' version='post' />
         <Row className='confirmPostRow'>
           <Col xs={4} sm={4} md={4} lg={4} xl={4}>
             <Menu history={props.history} />
@@ -91,7 +102,7 @@ const Confirm = (props) => {
                     suffixIcon={customArrow}
                     style={{width: '65px'}}
                     >
-                    {[1,2,3,4,5].map((item, i) => <Option value={item}>{item}</Option>)}
+                    {[1,2,3,4,5].map((item, i) => <Option key={i} value={item}>{item}</Option>)}
                   </Select>
                 </div>
                 <p className='invoiceTitle'>Feature Listing</p>
@@ -105,14 +116,12 @@ const Confirm = (props) => {
               <div className='invoiceDivider' />
               <div className='invoiceTextContainer'>
                 <p className='invoiceTotal'>TOTAL</p>
-                <p className='invoiceTotal'>UGX {state.total + state.addition.emailFeatured + state.addition.webFeatured + state.addition.landingFeatured}</p>
+                <p className='invoiceTotal'>UGX {total}</p>
               </div>
               </div>
             </div>
             <div className='confirmPostButtonContainer'>
-              <span to="/post/howitworks/create/confirm/payment">
-                <Button title='proceed to check out' small color='#C1839F' click={proceed} enabled />
-              </span>
+                <Button title='proceed to check out' small color='#C1839F' click={initiatePayment} enabled={true} />
             </div>
           </Col>
         </Row>

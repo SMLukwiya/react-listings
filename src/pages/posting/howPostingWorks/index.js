@@ -2,37 +2,47 @@ import React, {useState, useEffect} from 'react';
 import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
+import { useCookies } from 'react-cookie';
+import { useDispatch } from 'react-redux';
 
 import './posting.css';
+import { choose_listing_type } from '../../../store/actions';
 import Header from '../../../components/Header';
 import Menu from '../../../components/Menu';
 import BackButton from '../../../components/common/BackButton';
+import Input from '../../../components/common/Input';
 import Background from '../../../components/common/Background';
 import AnimatedButton from '../../../components/common/Button/Animated';
 
 const category = [
   {
     title: 'rent',
-    entries: [{value: 'shared space'}, {value: 'living space'}, {value: 'event space'}, {value: 'work space'}, {value: 'show/exhibition space'}, {value: 'live + work space'}]
+    entries: [{name: 'shared space', value: 'sharedspace'}, {name: 'living space', value: 'livingspace'}, {name: 'event space', value: 'eventspace'}, {name: 'work space', value: 'workspace'}, {name: 'show/exhibition space', value: 'showexhibitionspace'}, {name: 'live/work space', value: 'liveworkspace'}]
   },
   {
     title: 'sale',
-    entries: [{value: 'building'}, {value: 'apartment'}, {value: 'land'}]
+    entries: [{name: 'building', value: 'building'}, {name: 'apartment', value: 'apartment'}, {name:  'land', value: 'land'}]
   },
   {
     title: 'lease',
-    entries: [{value: 'building'}, {value: 'land'}]
+    entries: [{name: 'building', value: 'building'}, {name: 'land', value: 'land'}]
   }
 ]
 
 const Confirm = (props) => {
   const [showPage, setShowPage] = useState(false);
+  const [cookies, setCookie] = useCookies();
+  const [state, setState] = useState({type: '', category: ''});
   const [onCategoryTitle, setOnCategoryTitle] = useState(false);
   const [onCategory, setOnCategory] = useState(-1);
+  const dispatch = useDispatch();
 
   useEffect(() => {setShowPage(true)}, []);
 
-  const onCategorySelect = (index) => {
+  const onCategorySelect = (index, title) => {
+    setState({ ...state, type: title });
+
+    setCookie('p-listings_listing_type', title, {path: '/'});
     setOnCategoryTitle(index);
     setOnCategory(index);
   }
@@ -47,7 +57,12 @@ const Confirm = (props) => {
   }
 
   const onChooseSpaceType = (value) => {
-    sessionStorage.setItem('listingsCategoryType', value)
+    setState({ ...state, category: value });
+
+    setCookie('p-listings_started_posting', 'true', {path: '/'});
+    setCookie('p-listings_listing_category', value, {path: '/'});
+    dispatch(choose_listing_type(state.type, state.category))
+
     setTimeout(() => {
       props.history.push('/posting/howitworks/create')
     }, 300);
@@ -61,7 +76,7 @@ const Confirm = (props) => {
       unmountOnExit
       appear>
       <Col xs={7} sm={7} md={7} lg={7} xl={7}>
-        <div className='howItWorksCategoryTitle' onClick={() => onCategorySelect(index)}>{title}</div>
+        <div className='howItWorksCategoryTitle' onClick={() => onCategorySelect(index, title)}>{title}</div>
       </Col>
     </CSSTransition>
   )
@@ -75,7 +90,7 @@ const Confirm = (props) => {
       appear>
     <Col span={20}>
       <Row>
-        {entries.map(({value}) => <div key={value} className='howItWorksCategoryText' onClick={() => onChooseSpaceType(value)}>{value}</div>)}
+        {entries.map(({name, value}) => <div key={value} className='howItWorksCategoryText' onClick={() => onChooseSpaceType(value)}>{name}</div>)}
       </Row>
     </Col>
     </CSSTransition>
@@ -89,7 +104,7 @@ const Confirm = (props) => {
       unmountOnExit>
       <div className='howItWorksContainer'>
         <Background />
-        <Header color='#C1839F' />
+        <Header color='#C1839F' version='post' />
         <Row className='howItWorksRow'>
           <Col xs={4} sm={4} md={4} lg={4} xl={4}>
             <Menu history={props.history} />

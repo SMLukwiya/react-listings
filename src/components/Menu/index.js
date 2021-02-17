@@ -16,7 +16,7 @@ const Menu = (props) => {
   return (
     <div className={classes.Container}>
       <div className={classes.Link}>
-        <Link to="/signin">sign in</Link>
+        <Link to="/signin">sign up</Link>
       </div>
       <div className={classes.Link}>
         <Link to="" onClick={(e) => click(e)(props.howitworksRef)}>how it works</Link>

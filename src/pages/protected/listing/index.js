@@ -61,7 +61,7 @@ const Listing = (props) => {
       unmountOnExit>
       <div className='eachListingContainer'>
         <Background />
-        <Header color='#C1839F' />
+        <Header color='#C1839F' version='find' />
         <Row className='eachListingRow'>
           <Row className=''>
             {[{image: house1},{image: house2},{image: house3}].map(({image}, i) =>

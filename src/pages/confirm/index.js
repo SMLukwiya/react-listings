@@ -22,7 +22,7 @@ const Confirm = (props) => {
       unmountOnExit>
       <div className='confirmPageContainer'>
         <Background />
-        <Header color='#00A8E8' />
+        <Header color='#00A8E8' version='find' />
         <Row className='confirmPageRow'>
           <Col span={4}>
             <Menu history={props.history} />
@@ -35,7 +35,7 @@ const Confirm = (props) => {
             <div className='confirmPageResendContainer'>
               <div className='confirmPageResendText'>Didn't get the link?</div>
               <div className='confirmPageButtonContainer'>
-                <Button title="resend link" color='#00A8E8' small />
+                <Button title="resend link" color='#00A8E8' small enable click={() => console.log('Resend link')} />
               </div>
             </div>
           </Col>

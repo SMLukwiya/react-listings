@@ -13,10 +13,9 @@ import Button from '../../components/common/Button';
 
 const Confirm = (props) => {
   const [showPage, setShowPage] = useState(false);
-  const user = useSelector(state => state.user)
-  console.log(user.user);
+  const user = useSelector(state => state.user);
 
-  useEffect(() => {setShowPage(true)}, []);
+  useEffect(() => setShowPage(true), []);
 
   return (
     <CSSTransition
@@ -26,7 +25,7 @@ const Confirm = (props) => {
       unmountOnExit>
       <div className='congratsPageContainer'>
         <Background />
-        <Header color='#00A8E8' />
+        <Header color='#00A8E8' version='find' />
         <Row className='congratsPageRow'>
           <Col span={4} style={{marginTop: '40px'}}>
             <Menu history={props.history} />

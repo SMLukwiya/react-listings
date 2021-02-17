@@ -4,6 +4,8 @@ import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
+import { withCookies } from 'react-cookie';
+
 import { subscribe } from '../../store/actions';
 import {checkValidity} from '../../utils';
 
@@ -23,6 +25,7 @@ const Finding = (props) => {
 
   useEffect(() => {setShowPage(true)}, []);
   const dispatch = useDispatch();
+  const {cookies} = props;
 
   const handleChange = (e) => {
     const newState = {...state};
@@ -36,14 +39,17 @@ const Finding = (props) => {
   }
 
   const onClickSubscribe = useCallback(() => {
-    setTimeout(() => props.history.push('/finding/congrats'), 1000);
-    // const data = { email: state.value };
-    //
-    // dispatch(subscribe(data, (error) => {
-    //   if(error) {console.log('error', error); return setState({...state, message: error, value: ''});}
-    //
-    //   setTimeout(() => props.history.push('/finding/congrats'), 1000);
-    // }))
+    // setTimeout(() => props.history.push('/finding/congrats'), 1000);
+    const data = { email: state.value };
+
+    dispatch(subscribe(data, (error, api_token, user_role) => {
+      if(error) {console.log('error', error); return setState({...state, message: error, value: ''});}
+
+      cookies.set('p-listings_user_token', api_token, {path: '/'});
+      cookies.set('p-listings_user_role', user_role, {path: '/'});
+
+      setTimeout(() => props.history.push('/finding/congrats'), 1000);
+    }))
   }, [dispatch, state, props.history]);
 
   return (
@@ -54,7 +60,7 @@ const Finding = (props) => {
       unmountOnExit>
       <div className='findingPageContainer'>
         <Background />
-        <Header color='#00A8E8' />
+        <Header color='#00A8E8' version='find' />
         <Row className='findingPageRow'>
           <Col xl={4} lg={4} md={4} sm={4} xs={4} style={{marginTop: '40px'}}>
             <Menu history={props.history} />
@@ -71,11 +77,11 @@ const Finding = (props) => {
               {state.touched && <p className='error'>{state.message}</p>}
             </div>
             <div className='findingPageText'>
-              <Checkbox className='findingPageText'><span style={{color: '#00A8E8'}}>read</span> & I accept the Terms of Use and Privacy Policy</Checkbox>
+              <Checkbox className='findingPageText' ><span style={{color: '#00A8E8'}}>read</span> & I accept the Terms of Use and Privacy Policy</Checkbox>
             </div>
             <div className='findingPageButtonContainer'>
               <span>
-                {user.loading ? <Loader /> :<Button small title="subscribe" color="#00A8E8" enabled={/*state.valid*/true} click={onClickSubscribe} />}
+                {user.loading ? <Loader /> :<Button small title="subscribe" color="#00A8E8" enabled={state.valid} click={onClickSubscribe} />}
               </span>
             </div>
           </Col>
@@ -85,4 +91,4 @@ const Finding = (props) => {
   )
 }
 
-export default Finding;
+export default withCookies(Finding);

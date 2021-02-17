@@ -4,10 +4,12 @@ import classes from './input.module.css';
 
 const Input = (props) => {
   let inputElement = null;
+  let message = '';
   const inputClasses = [classes.inputContainer];
 
   if (props.invalid && props.touched) {
-    // inputClasses.push(classes.Invalid);s
+    // inputClasses.push(classes.Invalid);
+    message = props.message
   }
 
   switch(props.elementType) {
@@ -26,6 +28,7 @@ const Input = (props) => {
   return (
     <div className={inputClasses.join(' ')}>
       {inputElement}
+      {message ? <span className={classes.inputErrorMessage}>{message}</span> : <React.Fragment />}
     </div>
   );
 }

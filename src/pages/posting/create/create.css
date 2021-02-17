@@ -118,4 +118,9 @@
   justify-content: flex-end;
   margin-right: 9%;
   margin-top: 100px;
+  margin-bottom: 10px;
+}
+
+.createPageButtonContainer > div {
+  height: 100%
 }

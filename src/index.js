@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { CookiesProvider } from 'react-cookie';
 
 // fonts
 import './assets/fonts/ITCAvantGardeStdBk.otf';
@@ -15,7 +16,9 @@ import './assets/fonts/ITCAvantGardeStdXLtObl.otf';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

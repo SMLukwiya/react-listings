@@ -3,9 +3,12 @@ import { Row, Col, Image } from 'antd';
 import { Link } from 'react-router-dom';
 
 import LOGO from '../../assets/LOGO.svg';
+import LOGOBLUE from '../../assets/LOGO_blue.png';
+import LOGOPINK from '../../assets/LOGO_pink.png';
+
 import classes from './header.module.css';
 
-const Header = ({color, fontSize, center}) => {
+const Header = ({color, fontSize, center, version}) => {
   const date = new Date();
   const style = {
     marginRight: center ? 0 : '5%',
@@ -19,7 +22,7 @@ const Header = ({color, fontSize, center}) => {
   return(
     <div className={classes.Container}>
       <Link to="/" className={classes.Image}>
-        <Image src={LOGO} preview={false} />
+        <Image src={version === 'find' ? LOGOBLUE : version === 'post' ? LOGOPINK : LOGO} preview={false} />
       </Link>
       {!center ? <h1 style={style}>The Property Listings</h1> :
       <div style={{display: 'flex', alignItems: 'center', marginRight: '30px'}}>

@@ -1,16 +1,19 @@
-import React, {useState, useEffect} from 'react';
-import { Row, Col, Select, Image } from 'antd';
+import React, {useState, useEffect, useCallback} from 'react';
+import { Row, Col, Select, Image, Spin } from 'antd';
 import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
+import { useSelector, useDispatch } from 'react-redux';
+import { useCookies } from 'react-cookie';
 import RICIBs from 'react-individual-character-input-boxes'
 
 import './payment.css';
 import Header from '../../components/Header';
 import Menu from '../../components/Menu';
 import BackButton from '../../components/common/BackButton';
-import AnimatedButton from '../../components/common/Button/Animated';
+import Button from '../../components/common/Button';
 import Background from '../../components/common/Background';
 import CustomArrow from '../../components/common/CustomArrow';
+import { makePayment } from '../../store/actions';
 const { Option } = Select;
 
 const paymentOptions = [
@@ -26,6 +29,8 @@ const paymentOptions = [
 
 const Confirm = (props) => {
   const [showPage, setShowPage] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies();
+  const dispatch = useDispatch();
   const [state, setState] = useState({
       momo: false,
       bankcard: false,
@@ -34,7 +39,9 @@ const Confirm = (props) => {
       expiryDate: '',
       securityCode: '',
       message: ''
-  })
+  });
+
+  const {property_id, payment_property_id, loading} = useSelector(state => state.listings);
 
   useEffect(() => {setShowPage(true)}, []);
 
@@ -52,9 +59,18 @@ const Confirm = (props) => {
     }
   }
 
-  const confirmPaymentDetails = () => {
-    props.history.push('/post/howitworks/create/confirm/payment/finish')
-  }
+  const confirmPaymentDetails = useCallback(() => {
+    dispatch(makePayment(payment_property_id, (error) => {
+      if(error) return console.log('Error', error);
+
+      removeCookie(`p-listings_listings_id_${property_id}`);
+      removeCookie(`p-listings_listings_total_${payment_property_id}`);
+
+      setTimeout(() => {
+        props.history.push('/post/howitworks/create/confirm/payment/finish');
+      }, 1000)
+    }))
+  }, [dispatch]);
 
   const merchantOutput = (value) => {
     console.log('Merchant', value)
@@ -68,7 +84,7 @@ const Confirm = (props) => {
       unmountOnExit>
       <div className='paymentPageContainer'>
         <Background />
-        <Header color='#C1839F' />
+        <Header color='#C1839F' version='post' />
         <Row className='paymentPageRow'>
           <Col xs={4} sm={4} md={4} lg={4} xl={4}>
             <Menu history={props.history} />
@@ -154,9 +170,9 @@ const Confirm = (props) => {
             </Row>
 
             <div className='paymentPageButtonContainer'>
-              <span>
-                <AnimatedButton title='next' small color='#C1839F' click={confirmPaymentDetails} enabled />
-              </span>
+              <Spin tip='loading..' spinning={loading}>
+                <Button title='next' small color='#C1839F' click={confirmPaymentDetails} enabled />
+              </Spin>
             </div>
           </Col>
         </Row>

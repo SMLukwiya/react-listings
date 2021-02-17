@@ -24,3 +24,8 @@
   border: 2px solid red;
   border-radius: 20px;
 }
+
+.inputErrorMessage {
+  color: red;
+  font-size: 12px;
+}

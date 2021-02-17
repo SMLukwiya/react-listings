@@ -2,6 +2,7 @@ import React, {useRef, useEffect, useState} from 'react';
 import { Row, Col, Image } from 'antd';
 import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
+import { useSelector } from 'react-redux';
 
 import './home.css';
 import Header from '../../components/Header';
@@ -69,8 +70,10 @@ const howItWorksPost = [
 
 const Home = (props) => {
   const [showPage, setShowPage] = useState(false);
+  const userAuth = useSelector(state => state.user.user);
   const howitworksRef = useRef(null);
   const aboutusRef = useRef(null);
+  console.log(userAuth)
 
   const location = props.location.pathname, history = props.history;
 
@@ -114,7 +117,7 @@ const Home = (props) => {
             </div>
             <Row className='homePageButtonRow'>
               <Col span={7} className='homePageCol1-1'>
-                <Link to="/finding"><Button color='#00A8E8' title="Find a Space"/></Link>
+                <Link to={(userAuth.token && userAuth.loggedIn) ? "/finding/congrats" : "/finding"}><Button color='#00A8E8' title="Find a Space"/></Link>
                 <p className='homePageButtonDescription'>Free to subscribe. New listings are emailed every Friday. Listings only available through the newsletter.</p>
               </Col>
               <Col span={7} className='homePageCol1-2'>

@@ -133,7 +133,7 @@ const Listings = (props) => {
       unmountOnExit>
       <div className='allListingsContainer'>
         <Background />
-        <Header color='#00A8E8' fontSize={20} center />
+        <Header color='#00A8E8' fontSize={20} center version='find'/>
         <Row className='allListingsRow'>
           <div className='regionContainer'>
             <div className='regionSelector'>

@@ -25,7 +25,7 @@ const Confirm = (props) => {
       unmountOnExit>
       <div className='finishPageContainer'>
         <Background />
-        <Header color='#C1839F' />
+        <Header color='#C1839F' version='post' />
         <Row className='finishPageRow'>
           <Col span={4}>
             <Menu history={props.history} />

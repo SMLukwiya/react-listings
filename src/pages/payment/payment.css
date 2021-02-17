@@ -58,13 +58,15 @@
 
 .paymentPageButtonContainer {
   height: 40px;
-  /* display: flex; */
-  /* justify-content: flex-end; */
   margin-right: 10%;
   margin-top: 100px;
   position: absolute;
   bottom: 0px;
   right: 15px;
+}
+
+.paymentPageButtonContainer div {
+  height: 100%;
 }
 
 /* CARD PAYMENT */
