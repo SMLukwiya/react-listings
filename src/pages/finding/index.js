@@ -21,6 +21,7 @@ import Loader from '../../components/common/Loader';
 const Finding = (props) => {
   const [showPage, setShowPage] = useState(false);
   const [state, setState] = useState({ elementType: 'input', elementConfig: { type: 'email' }, value: '', validation: { required: true }, valid: false, message: '', touched: false });
+  const [agreeToTerms, setAgreeToTerms] = useState(false);
   const user = useSelector(reduxState => reduxState.user);
 
   useEffect(() => {setShowPage(true)}, []);
@@ -38,19 +39,24 @@ const Finding = (props) => {
     setState(newState);
   }
 
+  const onAgreeToTerms = (e) => {
+    setAgreeToTerms(e.target.checked);
+  }
+
   const onClickSubscribe = useCallback(() => {
-    // setTimeout(() => props.history.push('/finding/congrats'), 1000);
     const data = { email: state.value };
 
-    dispatch(subscribe(data, (error, api_token, user_role) => {
-      if(error) {console.log('error', error); return setState({...state, message: error, value: ''});}
+    if (agreeToTerms) {
+      dispatch(subscribe(data, (error) => {
+        if(error) {console.log('error', error); return setState({...state, message: error, value: ''});}
 
-      cookies.set('p-listings_user_token', api_token, {path: '/'});
-      cookies.set('p-listings_user_role', user_role, {path: '/'});
+        setTimeout(() => props.history.push('/finding/congrats'), 1000);
+      }));
+    } else {
+      return setState({ ...state, message: 'Please agree to the terms and conditions' });
+    }
 
-      setTimeout(() => props.history.push('/finding/congrats'), 1000);
-    }))
-  }, [dispatch, state, props.history]);
+  }, [state, props.history]);
 
   return (
     <CSSTransition
@@ -77,7 +83,7 @@ const Finding = (props) => {
               {state.touched && <p className='error'>{state.message}</p>}
             </div>
             <div className='findingPageText'>
-              <Checkbox className='findingPageText' ><span style={{color: '#00A8E8'}}>read</span> & I accept the Terms of Use and Privacy Policy</Checkbox>
+              <Checkbox className='findingPageText' checked={agreeToTerms} onChange={(e) => onAgreeToTerms(e)}><span style={{color: '#00A8E8'}}>read</span> & I accept the Terms of Use and Privacy Policy</Checkbox>
             </div>
             <div className='findingPageButtonContainer'>
               <span>

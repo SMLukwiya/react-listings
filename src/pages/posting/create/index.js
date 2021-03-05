@@ -55,6 +55,7 @@ const Create = (props) => {
       aboutyou: listing.about_lister ? listing.about_lister : '',
       aboutspace: listing.description ? listing.description : '',
       rentalrequirements: listing.rental_requirements ? listing.rental_requirements : '',
+      contact: listing.contact ? listing.contact : '',
       images: listing.images.length ? listing.images : [],
       message: ''
     }
@@ -65,25 +66,24 @@ const Create = (props) => {
 
   const handleChange = (e, type) => {
     e.preventDefault();
+    type === 'amount' ? e.target.value = e.target.value.replace(/[^\w\s]/gi, '') : e.target.value = e.target.value;
     setState({ ...state,
       [type]: e.target.value
     });
   }
 
   const onChange = (imageList, addUpdateIndex) => {
-    // console.log(imageList, addUpdateIndex);
     setState({...state, images: imageList});
   };
 
   const onChangeSelect = (value, type) => {
-    // console.log(value);
     setState({
       ...state,
       [type]: value
     })
   }
 
-  const isFormValid = state.amount && state.rate && state.location && state.availability && state.aboutyou && state.aboutspace && state.rentalrequirements && state.images.length ? true : false;
+  const isFormValid = state.amount && state.rate && state.location && state.availability && state.aboutyou && state.aboutspace && state.rentalrequirements && state.contact && state.images.length ? true : false;
 
   // save to cookie except for images.
   const saveListing = () => {
@@ -96,6 +96,7 @@ const Create = (props) => {
     setCookie('p-listings_listing_aboutLister', state.aboutyou, {path: '/'});
     setCookie('p-listings_listing_aboutSpace', state.aboutspace, {path: '/'});
     setCookie('p-listings_listing_rentalRequirement', state.rentalrequirements, {path: '/'});
+    setCookie('p-listings_listing_contact', state.contact, {path: '/'});
     setCookie('p-listings_listing_images', state.images, {path: '/'});
   };
 
@@ -111,6 +112,7 @@ const Create = (props) => {
     removeCookie('p-listings_listing_aboutLister');
     removeCookie('p-listings_listing_aboutSpace');
     removeCookie('p-listings_listing_rentalRequirement');
+    removeCookie('p-listings_listing_contact');
     removeCookie('p-listings_listing_images');
   }
 
@@ -119,15 +121,20 @@ const Create = (props) => {
 
     saveListing();
 
-    dispatch(postlisting(state.title, state.aboutspace, state.region, state.location, state.amount, state.rate, state.availability, state.aboutyou, state.rentalrequirements, state.images, (err, property_id) => {
-      if (err) { console.log(err); return }
-      setCookie(`p-listings_listings_id_${property_id}`, property_id, {path: '/'});
+    dispatch(postlisting(state.title, state.aboutspace, state.region, state.location, state.amount, state.rate, state.availability, state.aboutyou, state.rentalrequirements, state.contact, state.images, (err, property_id) => {
+      if (err) {
+        console.log('Failed')
+        return console.log(err);
+      } else {
+        console.log('Success', property_id)
+        setCookie(`p-listings_listings_id_${property_id}`, property_id, {path: '/'});
 
-      removeListings();
+        removeListings();
 
-      setTimeout(() => {
-        props.history.push('/posting/howitworks/create/confirm')
-      }, 1000);
+        setTimeout(() => {
+          props.history.push('/posting/howitworks/create/confirm')
+        }, 1000);
+      }
 
     }));
   },[dispatch, state, props.history])
@@ -220,19 +227,7 @@ const Create = (props) => {
                 </Row>
                 <Row className='createPageEntryRow'>
                   <Col className='createPageEntryTitle'>contact</Col>
-                  <Col className='createPageInputContainer'>
-                    <Select
-                      defaultValue=''
-                      value={state.contact}
-                      style={{width: '100%'}}
-                      onChange={(e) => onChangeSelect(e, 'contact')}
-                      dropdownClassName='createPageInputContainer'
-                      suffixIcon={customArrow}>
-                      {['one','two','three','four','five'].map((item, i) =>  (
-                        <Option key={i} value={item}>{item}</Option>
-                      ))}
-                    </Select>
-                  </Col>
+                  <Col className='createPageInputContainer'><input onChange={(e) => handleChange(e, 'contact')} className='createPageInput' value={state.contact}/></Col>
                   {state.message && <span style={{textAlign: 'center', marginTop: '15px', color: 'red', fontSize: 14, fontFamily: 'ITCAvantGardeNormal'}}>{state.message}</span>}
                 </Row>
               </Col>

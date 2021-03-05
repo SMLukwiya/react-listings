@@ -109,3 +109,34 @@
   font-size: 13px;
   color: #403D39;
 }
+
+.inputContainer {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.inputLabel {
+  width: 10px;
+  font-family: ITCAvantGardeStdMedium;
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.inputStyle {
+  outline: none;
+  width: 100%;
+  border: 1px solid #C1839F;
+  background-color: #fff;
+}
+
+.paymentButton {
+  margin-top: 20px;
+  background-color: #C1839F;
+  color: #fff;
+  outline: none;
+  font-family: ITCAvantGardeStdMedium;
+  border: 0;
+  border-radius: 10px;
+  padding: 6px;
+  cursor: pointer;
+}

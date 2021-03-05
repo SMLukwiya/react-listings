@@ -22,6 +22,7 @@ const Signin = (props) => {
   const dispatch = useDispatch();
   const [cookies, setCookie] = useCookies();
   const [showPage, setShowPage] = useState(false);
+  const [name, setName] = useState({ elementType: 'input', elementConfig: { type: 'name' }, value: '', validation: { required: true }, valid: false, message: '', touched: false });
   const [email, setEmail] = useState({ elementType: 'input', elementConfig: { type: 'email' }, value: '', validation: { required: true }, valid: false, message: '', touched: false });
   const [password, setPassword] = useState({ elementType: 'input', elementConfig: { type: 'password' }, value: '', validation: { required: true }, valid: false, message: '', touched: false });
   const [confirmPassword, setConfirmPassword] = useState({ elementType: 'input', elementConfig: { type: 'password' }, value: '', validation: { required: true }, valid: false, message: '', touched: false });
@@ -40,7 +41,7 @@ const Signin = (props) => {
     setTypeFunction(newState);
   }
 
-  const signIn = () => {
+  const signUp = () => {
     if (password.valid && confirmPassword.value !== password.value) {
       setConfirmPassword({...confirmPassword, touched: true, message: 'Passwords do not match'});
       return;
@@ -76,6 +77,11 @@ const Signin = (props) => {
           <Col span={18} className='SiginCol'>
             <div className='SigninTitle'>Sign in</div>
             <div className='SigninText'>You will receive our email with new listings every Friday</div>
+            <div className='SigninEmailText'>name</div>
+            <div className='signInInputContainer'>
+              <Input elementConfig={name.elementConfig} change={(e) => handleChange(e, name, setName)} value={name.value} elementType={name.elementType} invalid={!name.valid} touched={name.touched} />
+              {name.touched && <p className='error'>{name.message}</p>}
+            </div>
             <div className='SigninEmailText'>email</div>
             <div className='signInInputContainer'>
               <Input elementConfig={email.elementConfig} change={(e) => handleChange(e, email, setEmail)} value={email.value} elementType={email.elementType} invalid={!email.valid} touched={email.touched} />
@@ -97,7 +103,7 @@ const Signin = (props) => {
         </Row>
         <Col className='signInNextContainer'>
         <Spin tip='loading..' spinning={user.loading}>
-            <Button small title="sign in" color="#00A8E8" enabled={email.valid && password.valid} click={signIn} />
+            <Button small title="sign in" color="#00A8E8" enabled={email.valid && password.valid} click={signUp} />
         </Spin>
         </Col>
       </div>

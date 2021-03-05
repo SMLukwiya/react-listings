@@ -41,8 +41,7 @@ export default (state = initialState, action) => {
         loading: false,
         user: {
           ...state.user,
-          token: action.payload.token,
-          userrole: action.payload.userrole,
+          token: action.payload.api_token,
           loggedIn: false
         }
       }

@@ -1,5 +1,4 @@
 import {axiosInstance} from '../../main';
-import axios from 'axios';
 import {store} from '../../App';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -52,7 +51,7 @@ export const choose_listing = (title, aboutspace, region, location, amount, rate
   }
 }
 
-export const postlisting = (title, aboutspace, region, location, amount, rate, availability, aboutyou, rentalrequirements, images, callback) => {
+export const postlisting = (title, aboutspace, region, location, amount, rate, availability, aboutyou, rentalrequirements, contact, images, callback) => {
   return dispatch => {
     dispatch({ type: UPLOADLISTING });
 
@@ -60,24 +59,12 @@ export const postlisting = (title, aboutspace, region, location, amount, rate, a
     const userData = store.getState().user;
     const { user: { token }} = userData;
     const { listing: { type, category }} = listingsData;
-    // console.log('Token:', token)
-    //
-    // console.log('House', title)
-    // console.log('Desc', aboutspace)
-    // console.log('type',  type, category)
-    // console.log('region', region)
-    // console.log('amount', amount)
-    // console.log('location', location)
-    // console.log('rate', rate)
-    // console.log('aboutyou', aboutyou)
-    // console.log('Availability', availability)
-    // console.log('rentalrequirements', rentalrequirements)
-    // console.log('images', images)
+    console.log('Cat', category)
 
     const formData = new FormData();
-    formData.append('user_token', token)
     formData.append('title', title)
-    formData.append('listing_description', aboutspace)
+    formData.append('description', aboutspace)
+    formData.append('about_space', aboutspace)
     formData.append('region', region)
     formData.append('location', location)
     formData.append('amount', amount)
@@ -85,20 +72,18 @@ export const postlisting = (title, aboutspace, region, location, amount, rate, a
     formData.append('category', category)
     formData.append('rate', rate)
     formData.append('about_lister', aboutyou)
-    formData.append('visibility', availability)
+    formData.append('status', 'pending')
     formData.append('requirements', rentalrequirements)
-    formData.append('featured_email', false)
-    formData.append('featured_landing', false)
-    formData.append('featured_listingpage', false)
-    // formData.append('images[]', images)
+    formData.append('email_featured', 0)
+    formData.append('web_featured', 0)
+    formData.append('landing_featured', 0)
+    formData.append('contact', contact)
 
     for (let a = 0; a < images.length; a++) {
       formData.append('images[]', images[a].file, images[a].file.name);
     }
 
-    // console.log(title, description, api_token, formData.getAll('images'))
-
-    return axiosInstance.post('api_listings',
+    return axiosInstance.post('listings',
       formData,
       {
         headers: {
@@ -110,18 +95,19 @@ export const postlisting = (title, aboutspace, region, location, amount, rate, a
       .then(response => {
         console.log('Response', response);
         const { data: { data } } = response;
+        console.log('Data',data.id)
 
         dispatch({
           type: UPLOADLISTING_SUCCESS,
           payload: {
-            property_id: data.property_id
+            property_id: data.id
           }
          });
 
-        callback(null, data.property_id)
+        callback(null, data.id)
       })
       .catch(err => {
-        console.log(err)
+        console.log('Error res', err.response.data)
         let errorResponse = 'Something went wrong';
         if (err.response && err.response.data) {
           const { response: { data: { message } }} = err;
@@ -142,8 +128,10 @@ export const fetchlistings = (callback) => {
     const userData = store.getState().user;
     const { user: { token }} = userData;
 
-    return axiosInstance.get('api_listings', {
-      'Authorization': 'Bearer ' + token
+    return axiosInstance.get('listings', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
       .then(response => {
         console.log(response);
@@ -158,9 +146,11 @@ export const fetchlistings = (callback) => {
       })
       .catch(err => {
         console.log(err.response);
-        let errorResponse = '';
-        const { response: { data: { message } }} = err;
-        errorResponse = message ? message : 'Something went wrong';
+        let errorResponse = 'Something went wrong';
+        if (err.response && err.response.data) {
+          const { response: { data: { message } }} = err;
+          errorResponse = message;
+        }
 
         dispatch({ type: FETCHLISTINGS_FAILED, payload: errorResponse });
 
@@ -173,7 +163,7 @@ export const fetchsinglelisting = (id, callback) => {
   return dispatch => {
     dispatch({ type: FETCHLISTING });
 
-    return axiosInstance.get(`api_listings/${id}`)
+    return axiosInstance.get(`listings/${id}`)
       .then(response => {
         const { data: { data } } = response;
 
@@ -194,37 +184,19 @@ export const fetchsinglelisting = (id, callback) => {
   }
 }
 
-export const makePayment = (property_id, amount, callback) => {
+export const makePayment = () => {
+  return ({ type: PAYMENT });
+}
+
+export const checkPaymentStatus = (property_id, callback) => {
   return dispatch => {
-    const { user: { userid, useremail, token }} = store.getState().user;
+    const userData = store.getState().user;
+    const { user: { token }} = userData;
 
-    dispatch({ type: PAYMENT });
-
-    return axios.post('https://api.flutterwave.com/v3/payments',
-      {
-        "tx_ref": uuidv4(),
-         "amount": amount,
-         "currency":"UGX",
-         "redirect_url":"http://localhost:3000/post/howitworks/create/confirm/payment/finish",
-         "payment_options":"card, mobilemoneyuganda",
-         "meta":{
-            "consumer_id":23,
-            "consumer_mac":"92a3-912ba-1192a"
-         },
-         "customer":{
-            "email": 'bonecollector256@gmail.com',
-            "phonenumber":"080****4528",
-            "name": 'useremail'
-         },
-         "customizations":{
-            "title":"Ubunifu Payments",
-            "description":"Middleout isn't free. Pay the price",
-            "logo":"https://assets.piedpiper.com/logo.png"
-         }
-      },
+    return axiosInstance.post(`listings/${property_id}`,
       {
         headers: {
-          'Authorization': `Bearer FLWSECK-37f50a89674cee4ba58c741dc9e2dbf1-X`,
+          'Authorization': `Bearer ${token}`,
         }
       }
     )
@@ -237,7 +209,7 @@ export const makePayment = (property_id, amount, callback) => {
       callback(null, response);
     })
     .catch(err => {
-      console.log(err)
+      console.log(err.response)
       let errorResponse = 'Something went wrong';
       if (err.response && err.response.data) {
         const { response: { data: { message } }} = err;

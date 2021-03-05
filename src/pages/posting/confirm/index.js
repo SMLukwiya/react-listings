@@ -1,10 +1,11 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import { Row, Col, Select, Image, Checkbox } from 'antd';
+import { Row, Col, Select, Image, Checkbox, Modal, Input, Spin } from 'antd';
 import {Link} from 'react-router-dom';
 import {CSSTransition} from 'react-transition-group';
 import { useCookies } from 'react-cookie';
 import { useSelector, useDispatch } from 'react-redux';
-import { makePayment, setPaymentDetails } from '../../../store/actions';
+import { makePayment, setPaymentDetails, checkPaymentStatus } from '../../../store/actions';
+import axios from 'axios';
 
 import './confirm.css';
 import Header from '../../../components/Header';
@@ -19,7 +20,12 @@ const Confirm = (props) => {
   const [showPage, setShowPage] = useState(false);
   const [ cookies, setCookie] = useCookies();
   const [state, setState] = useState({ numberOfWeeks: 1, total: 50000, emailFeatured: false, webFeatured: false, landingFeatured: false, addition: { emailFeatured: 0, webFeatured: 0, landingFeatured: 0 }, checkedBefore: false, message: '' })
+  const [email, setEmail] = useState('')
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('')
+  const [modalVisible, setModalVisible] = useState(false)
   const { payment_property_id, loading } = useSelector(state => state.listings);
+  const listings = useSelector(state => state.listings);
 
   useEffect(() => {setShowPage(true)}, []);
   const dispatch = useDispatch();
@@ -32,27 +38,42 @@ const Confirm = (props) => {
     setState({...state, [type]: e.target.checked, checkedBefore: true, addition: {...state.addition, [type]: e.target.checked ? (state.total * rate/100) : 0 } })
   }
 
+  const onchangeEmail = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const onChangeFirstname = (e) => {
+    setFirstname(e.target.value)
+  }
+
+  const onChangeLastname = (e) => {
+    setLastname(e.target.value)
+  }
+
+  const switchPaymentModal = () => {
+    setModalVisible(!modalVisible)
+  }
+
   const proceed = () => props.history.push('/post/howitworks/create/confirm/payment');
   let total = state.total + state.addition.emailFeatured + state.addition.webFeatured + state.addition.landingFeatured;
 
-  const onConfirmListing = useCallback(() => {
-      setPaymentDetails(null, total);
+  const onConfirmListing = () => {
+    switchPaymentModal();
+    dispatch(makePayment());
+  };
 
-      setCookie(`p-listings_listings_total_${payment_property_id}`, total, {path: '/'});
+  const onCheckPaymentStatus = () => {
+    dispatch(checkPaymentStatus(payment_property_id, (err, response) => {
+      if (err) {
+        return console.log(err)
+      } else {
+        console.log(response)
+        proceed();
+      }
+    }))
+  }
 
-      setTimeout(() => {
-        props.history.push('/post/howitworks/create/confirm/payment')
-      }, 1000)
-    }, [dispatch]);
-
-    // Initiate Payment
-    const initiatePayment = useCallback(() => {
-      dispatch(makePayment(15, total, (err, res) => {
-        if (err) return console.log('Payment Error', err);
-
-        console.log('Res',res);
-      }))
-    })
+  setInterval(onCheckPaymentStatus, 50000)
 
   const customArrow = () => (
     <div style={{ marginTop: '-10px', marginLeft: '-10px',height: '20px', width: '20px', backgroundColor: ''}}>
@@ -121,10 +142,43 @@ const Confirm = (props) => {
               </div>
             </div>
             <div className='confirmPostButtonContainer'>
-                <Button title='proceed to check out' small color='#C1839F' click={initiatePayment} enabled={true} />
+              <Spin tip='loading..' spinning={listings.loading}>
+                <Button title='proceed to check out' small color='#C1839F' click={switchPaymentModal} enabled={true} />
+              </Spin>
             </div>
           </Col>
         </Row>
+        <Modal
+          title='Enter your Details'
+          visible={modalVisible}
+          footer={null}
+          onCancel={switchPaymentModal}
+          bodyStyle={{display: 'flex', alignItems:'center', justifyContent: 'center', width: '100%'}}
+          >
+          <form method="POST" action="https://listings.ubunifu.systems/pay" target="_blank" onSubmit={onConfirmListing}>
+            <input type="hidden" name="_token" value="mUO5oiC43hDmLOju2bBEY4EMJJSeKcE7nitXAZT7" />
+              <div className="inputContainer">
+                  <label className='inputLabel'>email address</label>
+                  <input type="email" onChange={onchangeEmail} className="inputStyle" name="email" id="email" placeholder="Enter email" value={email} required />
+              </div>
+              <div className="inputContainer">
+                  <label className='inputLabel'>first Name</label>
+                  <input type="text" onChange={onChangeFirstname} className="inputStyle" id="firstname" name="firstname" placeholder="Enter first name" value={firstname} required />
+              </div>
+              <div className="inputContainer">
+                  <label className='inputLabel'>last Name</label>
+                  <input type="text" onChange={onChangeLastname} className="inputStyle" id="lastname" name="lastname" placeholder="Enter last name" value={lastname} required />
+              </div>
+              <input type="hidden" name="payment_method" value="both" />
+              <input type="hidden" name="currency" value="UGX" />
+
+              <input type="hidden" name="country" value="UG" />
+              <input type="hidden" name="amount" value={total} />
+              <input type="hidden" name="listings_id" value={payment_property_id} />
+              <input type="hidden" name="description" value={`Payment for the listing ${payment_property_id}`} />
+              <button type="submit" className='paymentButton'>Checkout and Pay</button>
+          </form>
+        </Modal>
       </div>
     </CSSTransition>
   )

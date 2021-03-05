@@ -26,3 +26,9 @@ export const checkValidity = (field, value, rules) => {
 
   return { isValid, message };
 }
+
+export const moneyFormatter = (num) => {
+  let num_parts = num.toString().split(".");
+  num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return num_parts.join(".");
+}

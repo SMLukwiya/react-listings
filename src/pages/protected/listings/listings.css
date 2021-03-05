@@ -198,6 +198,10 @@
 }
 
 /* SINGLE HOUSE */
+.housesContainer {
+  width: 100%;
+}
+
 .houseContainer {
   display: flex;
   margin-left: 7%;

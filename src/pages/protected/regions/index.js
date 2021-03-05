@@ -64,7 +64,7 @@ const Regions = (props) => {
 const RegionsProtected = ({isUserAuthenticated, ...rest}) => {
   return (
     <Route {...rest}
-      render={props => isUserAuthenticated ? <Regions {...props} /> : <Redirect to='/finish' />}
+      render={props => isUserAuthenticated ? <Regions {...props} /> : <Redirect to='/signin' />}
     />
   )
 }

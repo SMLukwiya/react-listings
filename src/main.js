@@ -32,13 +32,13 @@ import ListingProtected from './pages/protected/listing';
 import 'antd/dist/antd.css';
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://listings-endpoints.herokuapp.com/api/v1/',
+  baseURL: 'https://listings.ubunifu.systems/api/v1/',
   // timeout: 1000
 })
 
 function Main(props) {
   const user = useSelector(state => state.user);
-  const {user: { loggedIn }} = user;
+  const {user: { loggedIn, token }} = user;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -87,9 +87,9 @@ function Main(props) {
           <Route  exact path="/finding" component={FindAListing} />
           <Route path="/finding/congrats" component={Congrats} />
           <Route path="/finish" component={Finish} />
-          <RegionsProtected exact path='/getListings/region' isUserAuthenticated={loggedIn} />
-          <ListingsProtected exact path='/getlistings/listings' isUserAuthenticated={loggedIn} />
-          <ListingProtected path='/getListings/listings/:id' isUserAuthenticated={loggedIn} />
+          <RegionsProtected exact path='/getListings/region' isUserAuthenticated={token} />
+          <ListingsProtected exact path='/getlistings/listings' isUserAuthenticated={true} />
+          <ListingProtected path='/getListings/listings/:id' isUserAuthenticated={true} />
         </Switch>
       </Router>
   );

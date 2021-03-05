@@ -61,7 +61,7 @@ const Confirm = (props) => {
 
     setCookie('p-listings_started_posting', 'true', {path: '/'});
     setCookie('p-listings_listing_category', value, {path: '/'});
-    dispatch(choose_listing_type(state.type, state.category))
+    dispatch(choose_listing_type(state.type, value))
 
     setTimeout(() => {
       props.history.push('/posting/howitworks/create')

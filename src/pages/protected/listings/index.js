@@ -13,6 +13,7 @@ import Button from '../../../components/common/Button';
 import Background from '../../../components/common/Background';
 import CustomArrow from '../../../components/common/CustomArrow';
 import { fetchlistings } from '../../../store/actions';
+import { moneyFormatter } from '../../../utils';
 import { houses, categories, regions, sorting } from '../../../data';
 const { Paragraph } = Typography;
 
@@ -95,19 +96,19 @@ const Listings = (props) => {
     </Row>
   )
 
-  const House = ({id, image, rate, title, date, location, size, description, contact}) => (
-    <div className='houseContainer' onClick={() => props.history.push(`/getListings/listings/${id}`)}>
+  const House = ({property_id, images, rate, amount, title, created_at, location, size, description, contact}) => (
+    <div className='houseContainer' onClick={() => props.history.push(`/getListings/listings/${property_id}`)}>
       <div className='houseImageContainer'>
-        <Image src={image} preview={false} height='100%' width='100%' />
+        <Image src={images[0]} preview={false} height='100%' width='100%' />
       </div>
       <div className='houseTextContainer'>
         <div className='houseTitleContainer'>
-          <p className='houseTitleText'>{rate}/month</p>
+          <p className='houseTitleText'>{moneyFormatter(amount)}/{rate}</p>
           <div className='divider' style={{backgroundColor: '#00A8E8'}} />
           <p className='houseTitleText'>{title}</p>
         </div>
         <div className='houseSubtitleContainer'>
-          <p className='houseSubtitleText'>{date}</p>
+          <p className='houseSubtitleText'>{created_at}</p>
           <div className='divider' style={{backgroundColor: '#403D39'}} />
           <p className='houseSubtitleText'>{location}</p>
           <div className='divider' style={{backgroundColor: '#403D39'}} />
@@ -194,11 +195,11 @@ const Listings = (props) => {
 
           <div style={{height: '2px', backgroundColor: '#00A8E8', width: '85%', marginTop: '25px'}}/>
 
-            {houses.map(({id, image, title, rate, date, location, size, description, contact}, index) =>
-            <div key={id} >
-              <House id={id} image={image} rate={rate} title={title} date={date} location={location} size={size} description={description} contact={contact} />
-              <div style={{height: '2px', width: '85%', backgroundColor: '#E2E2E1', margin: '10px 0 0 7%'}} />
-            </div>
+            {houses.map(({property_id, images, title, rate, amount, created_at, location, region, size, about_space, contact}, index) =>
+              <div key={property_id} className='housesContainer' >
+                <House property_id={property_id} images={images} rate={rate} amount={amount} title={title} created_at={created_at} location={location} region={region} size={size} description={about_space} contact={contact} />
+                <div style={{height: '2px', width: '85%', backgroundColor: '#E2E2E1', margin: '10px 0 0 7%'}} />
+              </div>
             )}
 
           <div className='bottomContainer'>

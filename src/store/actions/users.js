@@ -1,38 +1,40 @@
 import {axiosInstance} from '../../main';
-import axios from 'axios';
 
 import {
   SUBSCRIBE, SUBSCRIBE_SUCCESS, SUBSCRIBE_FAILED,
   SIGNIN, SIGNIN_SUCCESS, SIGNIN_FAILED,
   SIGNUP, SIGNUP_SUCCESSFUL, SIGNUP_FAILED,
-   AUTOLOGIN } from './types';
+  AUTOLOGIN
+} from './types';
 
 export const subscribe = ({email}, callback) => {
   return dispatch => {
     dispatch({ type: SUBSCRIBE });
-    console.log(email)
-    return axiosInstance.post('subscribe', {
+
+    return axiosInstance.post('subscribers', {
         email: email
         })
         .then(response => {
           console.log(response)
-          const { data: { data: { api_token, user_role } }} = response;
+          const { data: { access_token }} = response;
 
           dispatch({
             type: SUBSCRIBE_SUCCESS,
             payload: {
-              token: api_token,
-              userrole: user_role
+              api_token: access_token
             }
           });
 
-          callback(null, api_token, user_role);
+          callback();
         })
         .catch(err => {
-          let errorResponse = ''
-          const { response: { data: { errors } } } = err;
-          console.log(errors)
-          errorResponse = errors ? errors[0] : 'Something went wrong';
+          console.log(err.response)
+          let errorResponse = 'Something went wrong';
+          if (err.response && err.response.data) {
+            const { response: { data: { errors } } } = err;
+            console.log(errors)
+            errorResponse = errors.email[0]
+          }
 
           dispatch({
             type: SUBSCRIBE_FAILED,

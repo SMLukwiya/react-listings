@@ -3,13 +3,19 @@
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  margin-left: 68px;
+  margin-left: 65px;
 }
 
 .Link {
   margin-top: 30px;
   margin-bottom: 30px;
+  /* width: 100px; */
+  /* background-color: red; */
   transform: rotate(-90deg);
+}
+
+.Link1 {
+  
 }
 
 .Link a {
